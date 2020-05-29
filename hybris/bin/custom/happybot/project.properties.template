@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+happybot.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+happybot.application-context=happybot-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.happybot=classpath:/happybot/web/spring/happybot-web-spring.xml
+
+
+
+happybot.javascript.paths.responsive=/responsive/common/js/happybot.js
+happybot.css.paths.responsive=/responsive/common/css/happybot.css

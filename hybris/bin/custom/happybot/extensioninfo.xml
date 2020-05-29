@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+        	
+    
+    <extension abstractclassprefix="Generated" classprefix="Happybot" description="happybot extension" managername="HappybotManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="happybot">
+                		
+        
+        <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->
+                         
+		
+        
+        <requires-extension name="addonsupport"/>
+        <requires-extension name="chatbot1905facades"/>
+        <requires-extension name="acceleratorstorefrontcommons"/>    		
+        
+        <requires-extension name="solrserver"/> 
+                		
+        
+        <coremodule generated="true" manager="org.happybot.jalo.HappybotManager" packageroot="org.happybot"/>
+                		
+        
+        		
+        
+        <meta key="classpathgen" value="false"/>
+                	
+    
+    </extension>
+        
+
+</extensioninfo>

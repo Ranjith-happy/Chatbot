@@ -1,0 +1,133 @@
+product-inquiry	  any alternate product availabe,
+product-inquiry   What is this product ? 
+product-inquiry   What's the product ? 
+product-inquiry   What is name of product ? 
+product-inquiry   What this product is all about? 
+product-inquiry   Can you tell me something about this product ? 
+product-inquiry   I need camera electronics items in site .
+product-inquiry   I need a television. 
+product-inquiry   can you find product  
+product-inquiry   camera 
+product-inquiry   card 
+product-inquiry   power 
+product-inquiry   sunglass 
+product-inquiry   cooler 
+product-inquiry   teens 
+product-inquiry   brands 
+product-inquiry   wear 
+product-inquiry   accessories 
+product-inquiry   youth 
+product-inquiry   snow 
+product-inquiry   pants 	
+product-inquiry   shirts 
+product-inquiry   shorts 
+product-inquiry   tops 
+product-inquiry   skirts 
+product-inquiry   bags 
+product-inquiry   belts 
+product-inquiry   Can you find ?
+product-inquiry   How much is the cost ? 
+product-inquiry   What's the price ? 
+product-inquiry   What's the cost ? 
+product-inquiry   How much is price? 
+product-inquiry   How much it costs ? 
+product-inquiry   price cost money how much. 
+product-inquiry   how much?
+product-inquiry   what all products available
+product-inquiry   I need details of
+product-inquiry   Can you recommend items from brand
+product-inquiry   Can you recommend items
+greeting	 hi 
+greeting	 hi. 
+greeting	 hello 
+greeting	 how are you ? 
+greeting	 hey . 
+greeting	 hows it going 
+greeting	 good morning 
+greeting	 good evening 
+greeting	 good afternoon 
+greeting	 howdy 
+conversation-continue	 ok wow great oh is it ? oh ohh Thats great Good Really hmm lemme think hm hmmm hmmmmm
+conversation-complete	 Thanks done that's all thats it. thats it I am done Thank you for information Thank. thanks. thank you. thanks nothing else thats it. Bye 
+conversation-complete	 Goodbye.
+conversation-complete	 Bye
+conversation-complete	 Thank you
+conversation-complete	 Thankyou
+store-finder    Where is the store, 
+store-finder	which all store near me, 
+store-finder	where can i get these items in store, 
+store-finder	where is the nearest shop ,
+store-finder	which is the nearest shop avaialable,
+store-finder	closest shop, 
+store-finder	how can i get to the nearest shop, 
+store-finder	is there a map link to the nearest shop store, 
+store-finder	can you help me with the nearest shop store, 
+store-finder	Find my nearest store, 
+store-finder	Stores near me, 
+store-finder	store, 
+store-finder	find store, 
+store-finder	Store details. 
+store-finder	Find near store
+order-status	where is my order,
+order-status	when my order will get delivered,expected delivery date of my order
+order-status	can i track my order, 
+order-status	what is my order status, 
+order-status	orders status,
+order-status	any information on my last order,
+order-status	can you fetch my latest order
+order-status	status of order
+order-status	find my order
+chat-functions  What can you do?
+chat-functions  What all can you do?
+chat-functions  What can you help me with?
+chat-functions  What are your features?
+chat-functions  I'm not sure
+chat-functions  Your features?
+customer-care	i need more help
+customer-care	can i get the customer care number
+customer-care	i need to speak with the suppport team
+customer-care	online support with customer care 
+customer-care	ASM team available? 
+customer-care	what is the contact number for customer care what is the email id of customer care
+customer-care	what is the phone number of customer care
+customer-care	 what is the mobile number of customer care
+customer-care	 can someone help me on phone
+customer-care	can i speak to an agent
+faq-delivery  Can you provide delivery policy, What is this site delivery policy? delivery options provided? Is free delivery supported? Can you shed some light on delivery options . how long does the order take to delivery
+faq-return-policy  Can you shed some light on return policy? 
+faq-return-policy  what are the return policy? 
+faq-return-policy  Can we return purchased product? 
+faq-return-policy  Shipment return policy. 
+faq-return-policy  Can you provide return details
+faq-return-policy  Can you explain return policy
+faq-return-policy  More details on return policy
+faq-quality what are the quality standards followed by this site? 
+faq-quality quality of goods? 
+faq-quality Are the products sold here are of good quality? 
+faq-quality Shed some light on the product quality sold here.
+faq-quality Quality of the products?
+faq-quality Can you explain the product quality
+faq-reset-password  Can you assist with password reset? 
+faq-reset-password	I have forgotten my password? 
+faq-reset-password	Can you reset my password? 
+faq-reset-password	Can you help with password reset. 
+faq-reset-password	I don't remember my password
+faq-reset-password	I forgot my password
+my-promotions Offers available 
+my-promotions my offers
+my-promotions offer
+my-promotions promotions
+my-promotions any promotions
+my-promotions promo
+my-promotions can you provide more details on promotions available to me
+my-promotions can you find my offers
+my-promotions can you find my promo
+my-promotions my promotions
+my-promotions any offers available for me
+my-promotions do I have any special offers
+my-promotions can you list my offers
+my-promotions what are the offers available to me
+place-order can you place order for this product?
+place-order place order for
+place-order place order
+addto-cart add to cart

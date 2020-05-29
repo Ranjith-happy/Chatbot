@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+            	
+    
+    
+    <extension abstractclassprefix="Generated" classprefix="Chatbot1905Storefront" name="chatbot1905storefront" usemaven="false">
+                        		
+        
+        
+        
+        <requires-extension name="happybot"/>
+        <requires-extension name="acceleratorstorefrontcommons"/>
+                        		
+        
+        
+        <requires-extension name="chatbot1905facades"/>
+                        		
+        
+        
+        <webmodule jspcompile="false" webroot="/chatbot1905storefront"/>
+                        		
+        
+        		
+        
+        
+        <meta key="extgen-template-extension" value="true"/>
+                        	
+    
+    
+    </extension>
+            
+
+
+</extensioninfo>

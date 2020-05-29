@@ -1,0 +1,19 @@
+Find order <START:orderData> 1234567 <END>
+Can you find order <START:orderData> 00000011 <END>
+Order details for <START:orderData> 1234567 <END>
+Order <START:orderData> 1234567 <END>
+Find <START:orderData> 1234567 <END>
+Find my order <START:orderData> 1234567 <END>
+my order <START:orderData> 1234567 <END> details
+where is my order <START:orderData> 1234567 <END>?
+when my order <START:orderData> 1234567 <END> will get delivered?
+when will my order <START:orderData> 1234567 <END> get delivered ?
+expected delivery date of my order <START:orderData> 1234567 <END>?
+where is the consignments now for  <START:orderData> 1234567 <END>? 
+can i track my order <START:orderData> 1234567 <END>?
+tell me where is the order <START:orderData> 1234567 <END> now?
+when is the delivery for <START:orderData> 1234567 <END>?
+courier when will i get for  <START:orderData> 1234567 <END>?
+what is my order status <START:orderData> 1234567 <END>
+orders status <START:orderData> 1234567 <END>
+status of order <START:orderData> 1234567 <END>

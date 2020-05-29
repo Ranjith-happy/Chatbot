@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+	<relations>
+		<relation code="LiveChatActivities" generate="true" localized="false" autocreate="true">
+			<sourceElement qualifier="questions" type="ActivityQuestions" cardinality="one" >
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</sourceElement>
+			<targetElement qualifier="answers" type="ActivityAnswers" cardinality="many" collectiontype="set" >
+				<modifiers read="true" write="true" search="true" optional="true" />
+			</targetElement>
+		</relation>
+	</relations>
+	
+	<itemtypes> 
+		<itemtype code="ActivityQuestions" autocreate="true" generate="true">
+				<deployment table="ActivityQuestions" typecode="12000" />
+				<attributes>
+					<attribute type="java.lang.String" qualifier="description">
+						<persistence type="property" />
+						<modifiers read="true" write="true" search="true" />
+					</attribute>
+					<attribute qualifier="product" type="Product">
+						<modifiers read="true" write="true" optional="true" search="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute type="User" qualifier="createdBy">
+						<persistence type="property" />
+						<modifiers read="true" write="true" search="true" />
+					</attribute>
+					<attribute type="java.lang.Boolean" qualifier="isActive">
+						<persistence type="property" />
+						<modifiers read="true" write="true" optional="true" />
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+					</attribute>
+				</attributes>
+		</itemtype>
+		
+		<itemtype code="ActivityAnswers" autocreate="true" generate="true">
+				<deployment table="ActivityAnswers" typecode="12001" />
+				<attributes>
+					<attribute type="java.lang.String" qualifier="description">
+						<persistence type="property" />
+						<modifiers read="true" write="true" search="true" />
+					</attribute>
+					<attribute qualifier="product" type="Product">
+						<modifiers read="true" write="true" optional="true" search="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute type="User" qualifier="createdBy">
+						<persistence type="property" />
+						<modifiers read="true" write="true" search="true" />
+					</attribute>
+					<attribute type="java.lang.Boolean" qualifier="isActive">
+						<persistence type="property" />
+						<modifiers read="true" write="true" optional="true" />
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+					</attribute>
+				</attributes>
+		</itemtype>
+	</itemtypes>
+	
+</items>

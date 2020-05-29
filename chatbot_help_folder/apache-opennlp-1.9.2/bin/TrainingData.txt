@@ -1,0 +1,267 @@
+Can you find the product <START:productData> 1223454 <END> ?
+Can you find the product <START:productData> Nikon Camera NXP <END> ? 
+I need some details of the item <START:productData> 1223454 <END> ?
+Can you fetch details of the item <START:productData> Nikon Camera NXP <END> ? 
+List the items from brand <START:productData> Nikon Camera NXP <END> ? 
+Can you recommend products similar to <START:productData> Canon Digital Camera <END> ? 
+I'm looking for <START:productData> Nikon Camera NXP <END> ? 
+I need <START:productData> Nikon Camera NXP <END> details ?
+Find product <START:productData> 897959345 <END>
+Find <START:productData> 897959345 <END> product
+Find <START:productData> dress <END> products
+Can you fetch details of the item <START:productData> 	Charger BC-TRP	<END>
+Can you fetch details of the item <START:productData> 	Starter Kit	<END>
+Can you fetch details of the item <START:productData> 	DSC-P71 NON 3.2Mpix 16MB MPEG USB	<END>
+Can you fetch details of the item <START:productData> 	MVC-CD400 NON 4Mpix MPEG CD-RW USB	<END>
+Can you fetch details of the item <START:productData> 	Flagship tripod with remote control and pan handle	<END>
+Can you fetch details of the item <START:productData> 	DSC-F717 NON 5.2Mpix 32MB JPEG MPEG USB2	<END>
+Can you fetch details of the item <START:productData> 	ACK-E2	<END>
+Can you fetch details of the item <START:productData> 	Digital Camera Tripod	<END>
+Can you fetch details of the item <START:productData> 	EF 2x II extender	<END>
+Can you fetch details of the item <START:productData> 	COMPACT CHARGER	<END>
+Can you fetch details of the item <START:productData> 	Camcordertape DV 60min (2)	<END>
+Can you fetch details of the item <START:productData> 	CAMERA TAPE DIGITAL8 90MIN 2PK	<END>
+Can you fetch details of the item <START:productData> 	ACK-E2	<END>
+Can you fetch details of the item <START:productData> 	InfoLITHIUMâ„¢ H Series Battery	<END>
+Can you fetch details of the item <START:productData> 	Web Camera (100KpixelM CMOS	<END>
+Can you fetch details of the item <START:productData> 	Binocular IS 10X30	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W1 + MSH64	<END>
+Can you fetch details of the item <START:productData> 	Megapixel Cyber-shot P73	<END>
+Can you fetch details of the item <START:productData> 	VIDEOTAPE 3 N 860 P	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE Z740 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	Z700	<END>
+Can you fetch details of the item <START:productData> 	C330  Digital foto 4.0	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE Z730 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE V530 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	SecureDigital XS 1Gb	<END>
+Can you fetch details of the item <START:productData> 	SecureDigital XS 512Mb	<END>
+Can you fetch details of the item <START:productData> 	SecureDigital XS 256Mb	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE P850 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE P880 Zoom	<END>
+Can you fetch details of the item <START:productData> 	LCD Cleaning Kit	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W17 black	<END>
+Can you fetch details of the item <START:productData> 	DSC-N1 DEU 8.3Mpix USB2.0	<END>
+Can you fetch details of the item <START:productData> 	Photosmart Quick Recharge Kit for HP M-series cameras	<END>
+Can you fetch details of the item <START:productData> 	Rechargeable Battery Pack NP-BG1	<END>
+Can you fetch details of the item <START:productData> 	Soft Carrying Case LCS-CFR	<END>
+Can you fetch details of the item <START:productData> 	Light HVL-20DW2	<END>
+Can you fetch details of the item <START:productData> 	Adapter AC Infolithium f Cybershot	<END>
+Can you fetch details of the item <START:productData> 	AC Adapter AC-L200	<END>
+Can you fetch details of the item <START:productData> 	High Quality Tripod	<END>
+Can you fetch details of the item <START:productData> 	Mini T-Cam	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE C533 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE C643 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE C663 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE V570 Dual Lens Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	QuickCam for Notebooks Pro	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE Z612 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE Z650 Zoom Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	10.2 Megapixel D-SLR with Standard Zoom Lens	<END>
+Can you fetch details of the item <START:productData> 	4GB Memory Stick Pro Duo + adapter	<END>
+Can you fetch details of the item <START:productData> 	V705	<END>
+Can you fetch details of the item <START:productData> 	DIGITAL CAMERA EASYSHARE C875	<END>
+Can you fetch details of the item <START:productData> 	NP03ZL Middle zoom lens	<END>
+Can you fetch details of the item <START:productData> 	Li-ion Battery for NV10	<END>
+Can you fetch details of the item <START:productData> 	Secure Digital Card 2GB	<END>
+Can you fetch details of the item <START:productData> 	NV3	<END>
+Can you fetch details of the item <START:productData> 	EOS 400D + EFS 18-55mm	<END>
+Can you fetch details of the item <START:productData> 	GR-80TP Extension Battery Grip/Tripod	<END>
+Can you fetch details of the item <START:productData> 	NP-E2 Nickel-Metal Hydride Battery	<END>
+Can you fetch details of the item <START:productData> 	EOS 30D SLR-Digital Camera 8 Mpix	<END>
+Can you fetch details of the item <START:productData> 	V603	<END>
+Can you fetch details of the item <START:productData> 	C503	<END>
+Can you fetch details of the item <START:productData> 	EasyShare P712	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W55	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot DSC-W55	<END>
+Can you fetch details of the item <START:productData> 	2GB microSD	<END>
+Can you fetch details of the item <START:productData> 	EOS 30D SLR-Digital Camera 8 Mpix inkl. EF-S 18-55mm	<END>
+Can you fetch details of the item <START:productData> 	DTC-1000 Component Cable	<END>
+Can you fetch details of the item <START:productData> 	FUN Flash Single Use Camera	<END>
+Can you fetch details of the item <START:productData> 	Farbwelt CN 135	<END>
+Can you fetch details of the item <START:productData> 	Farbwelt CN 135	<END>
+Can you fetch details of the item <START:productData> 	PROFESSIONAL BW400CN Film	<END>
+Can you fetch details of the item <START:productData> 	PROFESSIONAL BW400CN Film	<END>
+Can you fetch details of the item <START:productData> 	T-MAX P3200 Film	<END>
+Can you fetch details of the item <START:productData> 	EasyShare V803	<END>
+Can you fetch details of the item <START:productData> 	EasyShare V 803 Red Shimmer	<END>
+Can you fetch details of the item <START:productData> 	EasyShare V 803 White Glaze	<END>
+Can you fetch details of the item <START:productData> 	VCT-D580RM Remote Control Tripod	<END>
+Can you fetch details of the item <START:productData> 	Macro Ring Lite MR-14 EX	<END>
+Can you fetch details of the item <START:productData> 	EasyShare V 803 Silver Essence	<END>
+Can you fetch details of the item <START:productData> 	EasyShare V 803 Cosmic Blue	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W80	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W80	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W80	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W80	<END>
+Can you fetch details of the item <START:productData> 	DSC-T20 Cyber-shot  Silver	<END>
+Can you fetch details of the item <START:productData> 	DSC-T20 Cyber-shot  Black	<END>
+Can you fetch details of the item <START:productData> 	InfoLITHIUMâ„¢ H Series Battery	<END>
+Can you fetch details of the item <START:productData> 	SCHNEIDER-KREUZNACH XENAR 0.7X Wide-Angle Lens	<END>
+Can you fetch details of the item <START:productData> 	FARBWELT CN 135	<END>
+Can you fetch details of the item <START:productData> 	ELITE Chrome	<END>
+Can you fetch details of the item <START:productData> 	VCL-HG1737C	<END>
+Can you fetch details of the item <START:productData> 	InfoLITHIUMâ„¢ H Series Battery	<END>
+Can you fetch details of the item <START:productData> 	10.2 Megapixel D-SLR with Standard Zoom Lens	<END>
+Can you fetch details of the item <START:productData> 	4GB CF Card	<END>
+Can you fetch details of the item <START:productData> 	1V	<END>
+Can you fetch details of the item <START:productData> 	AC Adapter	<END>
+Can you fetch details of the item <START:productData> 	NP-FV 70	<END>
+Can you fetch details of the item <START:productData> 	8GB SD Card	<END>
+Can you fetch details of the item <START:productData> 	Battery Grip BG-E2	<END>
+Can you fetch details of the item <START:productData> 	Accessory value kit for Handycam	<END>
+Can you fetch details of the item <START:productData> 	Connecting cable VMC-MD1	<END>
+Can you fetch details of the item <START:productData> 	SD High Capacity Card 4GB	<END>
+Can you fetch details of the item <START:productData> 	AC-VQP10 CHARGER	<END>
+Can you fetch details of the item <START:productData> 	Monopod 100 - Floor Standing Monopod	<END>
+Can you fetch details of the item <START:productData> 	Macro Ring Lite MR-14EX	<END>
+Can you fetch details of the item <START:productData> 	Z812	<END>
+Can you fetch details of the item <START:productData> 	8X25 IS	<END>
+Can you fetch details of the item <START:productData> 	Rechargeable Battery for DSCT70/DSCT200	<END>
+Can you fetch details of the item <START:productData> 	PROFESSIONAL BW400CN Film	<END>
+Can you fetch details of the item <START:productData> 	Accessory value kit for Cyber-shot	<END>
+Can you fetch details of the item <START:productData> 	EOS 40D body	<END>
+Can you fetch details of the item <START:productData> 	Battery Charger 4xAA/AAA	<END>
+Can you fetch details of the item <START:productData> 	8GB Elite Pro CompactFlash Card 133x	<END>
+Can you fetch details of the item <START:productData> 	Battery Charger 2xAA/AAA	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE V1253	<END>
+Can you fetch details of the item <START:productData> 	4GB CF Card	<END>
+Can you fetch details of the item <START:productData> 	EasyShare ZD710	<END>
+Can you fetch details of the item <START:productData> 	Micro Webcam	<END>
+Can you fetch details of the item <START:productData> 	32GB SDHC Card	<END>
+Can you fetch details of the item <START:productData> 	LP-E5	<END>
+Can you fetch details of the item <START:productData> 	ACK-E5 AC Adapter Kit	<END>
+Can you fetch details of the item <START:productData> 	BG-E5	<END>
+Can you fetch details of the item <START:productData> 	Wide Strap for EOS 450D	<END>
+Can you fetch details of the item <START:productData> 	Alpha 200	<END>
+Can you fetch details of the item <START:productData> 	Gigashot K80H	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A350 + 18-70mm	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A350 + 18-70mm +55-200mm	<END>
+Can you fetch details of the item <START:productData> 	Rechargeable battery NP-BK1	<END>
+Can you fetch details of the item <START:productData> 	Alpha 350 Body	<END>
+Can you fetch details of the item <START:productData> 	Li-Ion f Series G	<END>
+Can you fetch details of the item <START:productData> 	Alpha 350	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE M1033	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A700 + SAL-18200 zoom lens	<END>
+Can you fetch details of the item <START:productData> 	EasyShare M 763	<END>
+Can you fetch details of the item <START:productData> 	Alpha 350	<END>
+Can you fetch details of the item <START:productData> 	Shoulder strap	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A900	<END>
+Can you fetch details of the item <START:productData> 	Camileo H20 EU	<END>
+Can you fetch details of the item <START:productData> 	HDR-XR105E	<END>
+Can you fetch details of the item <START:productData> 	PowerShot A480	<END>
+Can you fetch details of the item <START:productData> 	PowerShot A480	<END>
+Can you fetch details of the item <START:productData> 	DSC-T90	<END>
+Can you fetch details of the item <START:productData> 	EOS450D + 18-55 IS Kit	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A330 + DT 18 - 55 mm	<END>
+Can you fetch details of the item <START:productData> 	PL60 Black	<END>
+Can you fetch details of the item <START:productData> 	PL60 Grey	<END>
+Can you fetch details of the item <START:productData> 	PL60 Pink	<END>
+Can you fetch details of the item <START:productData> 	DSC-T90	<END>
+Can you fetch details of the item <START:productData> 	DSC-T90	<END>
+Can you fetch details of the item <START:productData> 	DSC-T90	<END>
+Can you fetch details of the item <START:productData> 	Accessory kit	<END>
+Can you fetch details of the item <START:productData> 	AVC-DC400	<END>
+Can you fetch details of the item <START:productData> 	ACC-TCH5	<END>
+Can you fetch details of the item <START:productData> 	ACC-CMFG	<END>
+Can you fetch details of the item <START:productData> 	Accessory kit	<END>
+Can you fetch details of the item <START:productData> 	Shoulder strap	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-200mm IS	<END>
+Can you fetch details of the item <START:productData> 	FDA-EP1AM	<END>
+Can you fetch details of the item <START:productData> 	DVM60	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS	<END>
+Can you fetch details of the item <START:productData> 	8GB SDHC Video	<END>
+Can you fetch details of the item <START:productData> 	4GB SDHC	<END>
+Can you fetch details of the item <START:productData> 	16GB SDHC Video	<END>
+Can you fetch details of the item <START:productData> 	DCC-L50B	<END>
+Can you fetch details of the item <START:productData> 	NP-FM55H	<END>
+Can you fetch details of the item <START:productData> 	NP-FM500H	<END>
+Can you fetch details of the item <START:productData> 	NP-FG1	<END>
+Can you fetch details of the item <START:productData> 	MSMT4G	<END>
+Can you fetch details of the item <START:productData> 	MSMT2G	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A380 + DT 18 - 55 mm	<END>
+Can you fetch details of the item <START:productData> 	SH-L1AM	<END>
+Can you fetch details of the item <START:productData> 	DSC-W180	<END>
+Can you fetch details of the item <START:productData> 	Flexi-Tripod	<END>
+Can you fetch details of the item <START:productData> 	DSC-W180	<END>
+Can you fetch details of the item <START:productData> 	DSC-W180	<END>
+Can you fetch details of the item <START:productData> 	EASYSHARE M381	<END>
+Can you fetch details of the item <START:productData> 	DSC-TX1	<END>
+Can you fetch details of the item <START:productData> 	DT 16-80mm F3.5-4.5	<END>
+Can you fetch details of the item <START:productData> 	DSC-TX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-TX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-WX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-WX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-WX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-TX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-TX1	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS + EF-S 55-250 IS	<END>
+Can you fetch details of the item <START:productData> 	EF 100mm f/2.8L Macro IS USM	<END>
+Can you fetch details of the item <START:productData> 	Striped Bungee Neck Strap	<END>
+Can you fetch details of the item <START:productData> 	Striped Bungee Neck Strap	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS + EF-S 55-250 IS	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS	<END>
+Can you fetch details of the item <START:productData> 	Battery Video Light	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS	<END>
+Can you fetch details of the item <START:productData> 	ACC-BBV5	<END>
+Can you fetch details of the item <START:productData> 	InfoLITHIUMâ„¢ H Series Battery	<END>
+Can you fetch details of the item <START:productData> 	500D Body	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS	<END>
+Can you fetch details of the item <START:productData> 	EF 300mm f/2.8L IS USM	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + 18-55mm IS + EF-S 55-250 IS	<END>
+Can you fetch details of the item <START:productData> 	FA-EB1AM	<END>
+Can you fetch details of the item <START:productData> 	BC-TRV	<END>
+Can you fetch details of the item <START:productData> 	BC-TRN	<END>
+Can you fetch details of the item <START:productData> 	PL60	<END>
+Can you fetch details of the item <START:productData> 	MSHX16A	<END>
+Can you fetch details of the item <START:productData> 	500D + 18-135mm IS	<END>
+Can you fetch details of the item <START:productData> 	MSHX8A	<END>
+Can you fetch details of the item <START:productData> 	MS Pro HG Duo HX 32GB	<END>
+Can you fetch details of the item <START:productData> 	500D + EF-S 18-55mm IS	<END>
+Can you fetch details of the item <START:productData> 	Rechargeable Battery Pack NP-BG1	<END>
+Can you fetch details of the item <START:productData> 	TS-E 90mm f/2.8	<END>
+Can you fetch details of the item <START:productData> 	NP-FM500H - Rechargeable Battery Pack	<END>
+Can you fetch details of the item <START:productData> 	500D Body	<END>
+Can you fetch details of the item <START:productData> 	4GB SD	<END>
+Can you fetch details of the item <START:productData> 	500D + 18-55mm IS + EF-S 55-250 IS	<END>
+Can you fetch details of the item <START:productData> 	16GB SDHC Card	<END>
+Can you fetch details of the item <START:productData> 	64GB SDXC Card	<END>
+Can you fetch details of the item <START:productData> 	4GB SDHC Card	<END>
+Can you fetch details of the item <START:productData> 	8GB SDHC Card	<END>
+Can you fetch details of the item <START:productData> 	AC-VQV10	<END>
+Can you fetch details of the item <START:productData> 	AC-PW10AM	<END>
+Can you fetch details of the item <START:productData> 	500D + EF-S 18-55mm IS	<END>
+Can you fetch details of the item <START:productData> 	EasyShare M531	<END>
+Can you fetch details of the item <START:productData> 	EasyShare M531	<END>
+Can you fetch details of the item <START:productData> 	500D + 18-55mm IS + EF-S 55-250 IS	<END>
+Can you fetch details of the item <START:productData> 	DSC-H20_MD Blue	<END>
+Can you fetch details of the item <START:productData> 	DSC-S930	<END>
+Can you fetch details of the item <START:productData> 	DSC-H20_MD Green	<END>
+Can you fetch details of the item <START:productData> 	DSC-H20_MD Red	<END>
+Can you fetch details of the item <START:productData> 	DSC-H20_MD	<END>
+Can you fetch details of the item <START:productData> 	DSC-HX1	<END>
+Can you fetch details of the item <START:productData> 	DSC-S930	<END>
+Can you fetch details of the item <START:productData> 	DSC-S930	<END>
+Can you fetch details of the item <START:productData> 	DSC-W270	<END>
+Can you fetch details of the item <START:productData> 	DSC-W270	<END>
+Can you fetch details of the item <START:productData> 	FinePix S1500	<END>
+Can you fetch details of the item <START:productData> 	M340	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + EF-S 18-55 IS	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D body	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + EF-S 18-200mm f/3.5-5.6 IS	<END>
+Can you fetch details of the item <START:productData> 	2GB SD Card	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A230 + DT 18 - 55 mm	<END>
+Can you fetch details of the item <START:productData> 	EasyShare Z915 red	<END>
+Can you fetch details of the item <START:productData> 	EOS 500D + EF-S 18-55IS + EF-S 55-250IS	<END>
+Can you fetch details of the item <START:productData> 	Camileo S10 EU	<END>
+Can you fetch details of the item <START:productData> 	PowerShot A480	<END>
+Can you fetch details of the item <START:productData> 	DSC-T90	<END>
+Can you fetch details of the item <START:productData> 	miniDV Head Cleaner	<END>
+Can you fetch details of the item <START:productData> 	Photosmart E317 Digital Camera	<END>
+Can you fetch details of the item <START:productData> 	DSC-N1	<END>
+Can you fetch details of the item <START:productData> 	NV10	<END>
+Can you fetch details of the item <START:productData> 	AV Cable	<END>
+Can you fetch details of the item <START:productData> 	Cyber-shot W55	<END>
+Can you fetch details of the item <START:productData> 	PL60 Silver	<END>
+Can you fetch details of the item <START:productData> 	LEGRIA HF S100	<END>
+Can you fetch details of the item <START:productData> 	DSLR-A100H	<END>
+Can you fetch details of the item <START:productData> 	Remote Control Tripod VCT-80AV	<END>
