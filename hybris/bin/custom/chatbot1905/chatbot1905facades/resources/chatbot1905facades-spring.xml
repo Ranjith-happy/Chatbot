@@ -188,4 +188,9 @@
 		<property name="chatbotCouponService" ref="chatbotCouponService"/>
 		<property name="couponConverter" ref="couponConverter"/>
 	</bean>
+	
+	<alias name="defaultLiveChatFacades" alias="liveChatFacades"/>
+	<bean id="defaultLiveChatFacades" class="org.chatbot1905.facades.livechat.impl.DefaultLiveChatFacades" >
+	
+    </bean>
 </beans>

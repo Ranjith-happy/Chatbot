@@ -3,6 +3,8 @@
  */
 package de.hybris.platform.acceleratorstorefrontcommons.controllers.pages;
 
+import static de.hybris.platform.commercefacades.constants.CommerceFacadesConstants.CONSENT_GIVEN;
+
 import de.hybris.platform.acceleratorstorefrontcommons.breadcrumb.Breadcrumb;
 import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.util.GlobalMessages;
@@ -22,6 +24,9 @@ import de.hybris.platform.commercefacades.user.UserFacade;
 import de.hybris.platform.commercefacades.user.data.RegisterData;
 import de.hybris.platform.commercefacades.user.data.TitleData;
 import de.hybris.platform.commerceservices.customer.DuplicateUidException;
+import de.hybris.platform.core.model.user.UserModel;
+import de.hybris.platform.servicelayer.model.ModelService;
+import de.hybris.platform.servicelayer.user.UserService;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -47,8 +52,6 @@ import org.springframework.web.util.WebUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static de.hybris.platform.commercefacades.constants.CommerceFacadesConstants.CONSENT_GIVEN;
-
 
 public abstract class AbstractRegisterPageController extends AbstractPageController
 {
@@ -68,6 +71,12 @@ public abstract class AbstractRegisterPageController extends AbstractPageControl
 
 	@Resource(name = "userFacade")
 	private UserFacade userFacade;
+
+	@Resource(name = "userService")
+	private UserService userService;
+
+	@Resource(name = "modelService")
+	private ModelService modelService;
 
 	@Resource(name = "registrationValidator")
 	private Validator registrationValidator;
@@ -157,6 +166,11 @@ public abstract class AbstractRegisterPageController extends AbstractPageControl
 		{
 			getCustomerFacade().register(data);
 			getAutoLoginStrategy().login(form.getEmail().toLowerCase(), form.getPwd(), request, response);
+
+			final UserModel userModel = userService.getCurrentUser();
+			userModel.setIsCurrentlyActive(false);
+			modelService.save(userModel);
+			modelService.refresh(userModel);
 			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.CONF_MESSAGES_HOLDER,
 					"registration.confirmation.message.title");
 

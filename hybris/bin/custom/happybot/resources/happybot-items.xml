@@ -59,6 +59,22 @@
 					</attribute>
 				</attributes>
 		</itemtype>
+		
+		<itemtype code="User" autocreate="false" generate="false">
+	            <attributes>
+					<attribute qualifier="isCurrentlyActive" type="java.lang.Boolean">
+	                    <defaultvalue>Boolean.FALSE</defaultvalue>
+	                    <modifiers read="true" write="true" search="true" optional="true"/>
+	                    <persistence type="property"/>
+	                </attribute>
+	                <attribute qualifier="likes" type="java.lang.Integer">
+	                    <defaultvalue>Integer.0</defaultvalue>
+	                    <modifiers read="true" write="true" search="true" optional="true"/>
+	                    <persistence type="property"/>
+	                </attribute>
+				</attributes>
+			</itemtype>
+			
 	</itemtypes>
 	
 </items>

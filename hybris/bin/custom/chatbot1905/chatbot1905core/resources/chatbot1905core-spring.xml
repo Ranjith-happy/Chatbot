@@ -542,4 +542,17 @@
 	<bean id="chatbotCouponService" class="org.chatbot1905.core.coupon.impl.DefaultChatbotCouponService">
 		<property name="flexibleSearchService" ref="flexibleSearchService"/>
 	</bean>
+	
+	<bean id="liveChatService" class="org.chatbot1905.core.livechat.service.impl.DefaultLiveChatService">
+	</bean>
+	
+	<bean id="liveChatDao" class="org.chatbot1905.core.livechat.dao.impl.DefaultLiveChatDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+	
+	
+	
+   <!--  <alias name="liveChatSessionCloseStrategy" alias="sessionCloseStrategy"/>
+	<bean id="liveChatSessionCloseStrategy " class="org.chatbot1905.core.session.LiveChatSessionCloseStrategy" parent="defaultSessionCloseStrategy">
+	</bean> -->
 </beans>

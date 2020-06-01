@@ -3,13 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <c:url value="/search/" var="searchUrl" />
-<spring:url value="/search/autocomplete/{/componentuid}" var="autocompleteUrl" htmlEscape="false">
-     <spring:param name="componentuid"  value="${component.uid}"/>
+<spring:url value="/search/autocomplete/{/componentuid}"
+	var="autocompleteUrl" htmlEscape="false">
+	<spring:param name="componentuid" value="${component.uid}" />
 </spring:url>
 
 <div class="ui-front">
@@ -29,12 +30,14 @@
 				</c:set>
 				<input type="text" id="js-site-search-input"
 					class="form-control js-site-search-input" name="text" value=""
-                    maxlength="100" placeholder="${searchPlaceholderHtml}"
+					maxlength="100" placeholder="${searchPlaceholderHtml}"
 					data-options="${fn:escapeXml(optionsJson)}">
 			</ycommerce:testId>
 
-			<span class="input-group-btn"> <ycommerce:testId code="header_search_button">
-					<button class="btn btn-link js_search_button" type="submit" disabled="true">
+			<span class="input-group-btn"> <ycommerce:testId
+					code="header_search_button">
+					<button class="btn btn-link js_search_button" type="submit"
+						disabled="true">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
 				</ycommerce:testId>
@@ -43,3 +46,22 @@
 	</form>
 
 </div>
+
+<!-- <div class="LiveChat_areaAutoComplete">
+    <input type="text" class="inputNameAll LiveChat_AutoComplete"/>
+	<ul class="selectAutoSuggest productNameList" data-text="add_product_name"></ul>
+</div> -->
+
+<div class="LiveChat_areaAutoComplete">
+	<a href="#" id="productUrl"
+		data-product-popup-title="Open Product Detail"> <input type="text"
+		class="inputNameAll LiveChat_AutoComplete" /></a>
+	<ul class="selectAutoSuggest productNameList"
+		data-text="add_product_name"></ul>
+</div>
+
+
+
+
+
+

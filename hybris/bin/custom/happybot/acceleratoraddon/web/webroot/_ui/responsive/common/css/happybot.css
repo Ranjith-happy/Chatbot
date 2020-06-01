@@ -1,0 +1,19 @@
+.inputNameAll {
+	width: 90%;
+	margin-bottom: 2%;
+	display: inline-block;
+}
+
+.inputNameAll::first-line {
+    background-color: cyan;
+}
+
+.selectAutoSuggest {
+	list-style: none;
+	border: 1px solid rgba(0, 0, 0, 0.16);
+	width: 90%;
+	background: #fff;
+	top: 0px;
+	display: none;
+	position: relative;
+}
