@@ -12,4 +12,20 @@
 		<property name="code" type="String"/>
 		<property name="name" type="String"/>
 	</bean>
+	
+	<bean class="org.chatbot1905.facades.product.data.rest.CommonRestResponseObject">
+        <property name="error" type="String"/>
+        <property name="responseCode" type="String"/>
+        <property name="validationError" type="java.lang.Object"/>
+		<property name="responseObject" type="java.lang.Object"/>
+    </bean>
+    
+    <bean class="org.chatbot1905.facades.product.data.ActivityQuestions">
+        <property name="description" type="String"/>
+        <property name="productCode" type="String"/>
+        <property name="validationError" type="java.lang.Object"/>
+		<property name="responseObject" type="java.lang.Object"/>
+    </bean>
+    
+    
 </beans>

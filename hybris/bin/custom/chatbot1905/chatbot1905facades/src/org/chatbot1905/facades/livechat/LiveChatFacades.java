@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface LiveChatFacades
 {
-	boolean noOfLikes(String userId);
+	boolean updateLikesCount(String userId);
 
-	boolean isCurrenntlyActiveFlgReset();
+	boolean updateActiveFlag();
 
 	List<UserModel> getActiveCustomerList();
 }

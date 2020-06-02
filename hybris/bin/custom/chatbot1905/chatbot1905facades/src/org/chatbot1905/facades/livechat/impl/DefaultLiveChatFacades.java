@@ -32,7 +32,7 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	private LiveChatService liveChatService;
 
 	@Override
-	public boolean noOfLikes(final String userId)
+	public boolean updateLikesCount(final String userId)
 	{
 		final UserModel userModel = userService.getUserForUID(userId);
 		final int noOfLikes = userModel.getLikes() == null ? 0 : userModel.getLikes();
@@ -43,7 +43,7 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	}
 
 	@Override
-	public boolean isCurrenntlyActiveFlgReset()
+	public boolean updateActiveFlag()
 	{
 		final UserModel userModel = userService.getCurrentUser();
 		userModel.setIsCurrentlyActive(false);
