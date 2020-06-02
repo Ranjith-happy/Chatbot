@@ -4,6 +4,7 @@
 package org.chatbot1905.core.livechat.service.impl;
 
 import de.hybris.platform.core.model.user.UserModel;
+import de.hybris.platform.servicelayer.user.UserService;
 
 import java.util.List;
 
@@ -23,10 +24,13 @@ public class DefaultLiveChatService implements LiveChatService
 	@Resource(name = "liveChatDao")
 	private LiveChatDao liveChatDao;
 
+	@Resource(name = "userService")
+	private UserService userService;
+
 	@Override
 	public List<UserModel> getActiveCustomerList()
 	{
-		return liveChatDao.getActiveCustomerList();
+		return liveChatDao.getActiveCustomerList(userService.getCurrentUser().getUid());
 	}
 
 }

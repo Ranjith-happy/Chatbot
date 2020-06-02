@@ -3,7 +3,7 @@
  */
 package org.chatbot1905.facades.livechat;
 
-import de.hybris.platform.core.model.user.UserModel;
+import de.hybris.platform.commercefacades.user.data.CustomerData;
 
 import java.util.List;
 
@@ -18,5 +18,5 @@ public interface LiveChatFacades
 
 	boolean updateActiveFlag();
 
-	List<UserModel> getActiveCustomerList();
+	List<CustomerData> getActiveCustomerList();
 }

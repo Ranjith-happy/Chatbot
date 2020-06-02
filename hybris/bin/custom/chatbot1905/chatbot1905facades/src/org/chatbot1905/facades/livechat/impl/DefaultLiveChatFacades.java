@@ -3,7 +3,9 @@
  */
 package org.chatbot1905.facades.livechat.impl;
 
+import de.hybris.platform.commercefacades.user.data.CustomerData;
 import de.hybris.platform.core.model.user.UserModel;
+import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.servicelayer.model.ModelService;
 import de.hybris.platform.servicelayer.user.UserService;
 
@@ -31,6 +33,9 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	@Resource(name = "liveChatService")
 	private LiveChatService liveChatService;
 
+	@Resource(name = "customerConverter")
+	private Converter<UserModel, CustomerData> customerConverter;
+
 	@Override
 	public boolean updateLikesCount(final String userId)
 	{
@@ -53,9 +58,10 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	}
 
 	@Override
-	public List<UserModel> getActiveCustomerList()
+	public List<CustomerData> getActiveCustomerList()
 	{
-		return liveChatService.getActiveCustomerList();
+		//customerConverter.convertAll(liveChatService.getActiveCustomerList());
+		return customerConverter.convertAll(liveChatService.getActiveCustomerList());
 	}
 
 }

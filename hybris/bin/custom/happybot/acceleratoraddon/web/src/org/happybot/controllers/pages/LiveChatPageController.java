@@ -4,7 +4,7 @@
 package org.happybot.controllers.pages;
 
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
-import de.hybris.platform.core.model.user.UserModel;
+import de.hybris.platform.commercefacades.user.data.CustomerData;
 
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class LiveChatPageController extends AbstractPageController
 	public CommonRestResponseObject getCurrentlyActiveUser()
 	{
 		//TODO Use populator to populate the user object instead of UserModel
-		final List<UserModel> userList = liveChatFacades.getActiveCustomerList();
+		final List<CustomerData> userList = liveChatFacades.getActiveCustomerList();
 		return WebUtils.createResponseObject(userList);
 	}
 }

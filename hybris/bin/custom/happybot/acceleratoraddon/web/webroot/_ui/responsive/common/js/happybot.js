@@ -12,7 +12,7 @@
 $(document).on("click","#mylogout",function(){ 
 	
 	$.ajax({
-		url : ACC.config.encodedContextPath + "/liveChat/resetFlag",
+		url : ACC.config.encodedContextPath + "/chat/resetFlag",
 		type : 'GET',
 		success : function(data) {
 		if(data !== "Server Error")
@@ -29,7 +29,7 @@ $(document).on("click","#mylogout",function(){
 $(document).on("click","#likeButton",function(){ 
 	
 	$.ajax({
-		url : ACC.config.encodedContextPath + "/liveChat/noOfLikes",
+		url : ACC.config.encodedContextPath + "/chat/updatelikes",
 		type : 'POST',
 		data : {
 			userId : "pooja@happiestminds.com"
@@ -102,34 +102,34 @@ $(document).on("click","li.productNameList",function(){
     $('.LiveChat_AutoComplete').val(value);
     $('#productUrl').attr('href', url);
     $(".selectAutoSuggest li").remove();
+
+    
 });
 
 
-/*$("#productUrl").click(function (event) {
+$("#productUrl").click(function (event) {
     event.preventDefault();
     var popupTitle = $(this).data('product-popup-title');
-  //  var cartId = $(this).data('savedcart-id');
     var url = $(this).attr("href");
-    //alert(url);
     var popupTitleHtml = ACC.common.encodeHtml(popupTitle);
     
-   // ACC.common.checkAuthenticationStatusBeforeAction(function(){
-    	$.get(url, undefined, undefined, 'html').done(function (data) {
-    		ACC.colorbox.open(popupTitleHtml,{
-    			html: data,
-    			width: 500,
-    			onComplete: function () {
-    				ACC.common.refreshScreenReaderBuffer();
-    				ACC.savedcarts.bindRestoreModalHandlers();
-    				ACC.savedcarts.bindPostRestoreSavedCartLink();
-    			},
-    			onClosed: function () {
-    				ACC.common.refreshScreenReaderBuffer();
-    			}
-    		});
-    	});
-   // });
+    if(url != '#')
+    	{
+    	    	$.get(url, undefined, undefined, 'html').done(function (data) {
+    	    		ACC.colorbox.open(popupTitleHtml,{
+    	    			html: data,
+    	    			height: 500,
+    	    			width:1000,
+    	    			onComplete: function () {
+    	    				ACC.common.refreshScreenReaderBuffer();
+    	    			},
+    	    			onClosed: function () {
+    	    				ACC.common.refreshScreenReaderBuffer();
+    	    			}
+    	    		});
+    	    	});
+    	    	
+    	}
+   
 });
-
-*/
 
