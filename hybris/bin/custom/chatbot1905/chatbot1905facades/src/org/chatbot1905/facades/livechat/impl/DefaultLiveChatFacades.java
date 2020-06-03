@@ -41,6 +41,9 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	@Resource(name = "activityQuestionsConverter")
 	private Converter<ActivityQuestions, ActivityQuestionsModel> activityQuestionsConverter;
 
+	@Resource(name = "getActivityQuestionsConverter")
+	private Converter<ActivityQuestionsModel, ActivityQuestions> getActivityQuestionsConverter;
+
 	@Override
 	public boolean updateLikesCount(final String userId)
 	{
@@ -65,17 +68,21 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	@Override
 	public List<CustomerData> getActiveCustomerList()
 	{
-		//customerConverter.convertAll(liveChatService.getActiveCustomerList());
 		return customerConverter.convertAll(liveChatService.getActiveCustomerList());
 	}
 
 	@Override
 	public boolean saveActivityQuestions(final ActivityQuestions activityQuestions)
 	{
-		// XXX Auto-generated method stub
 		final ActivityQuestionsModel activityQuestionsModel = activityQuestionsConverter.convert(activityQuestions);
 		modelService.save(activityQuestionsModel);
 		return true;
+	}
+
+	@Override
+	public List<ActivityQuestions> getLast24HoursPostedQuestions()
+	{
+		return getActivityQuestionsConverter.convertAll(liveChatService.getLast24HoursPostedQuestions());
 	}
 
 }

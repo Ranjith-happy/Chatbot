@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 
 import org.chatbot1905.core.livechat.dao.LiveChatDao;
 import org.chatbot1905.core.livechat.service.LiveChatService;
+import org.happybot.model.ActivityQuestionsModel;
 
 
 /**
@@ -32,5 +33,13 @@ public class DefaultLiveChatService implements LiveChatService
 	{
 		return liveChatDao.getActiveCustomerList(userService.getCurrentUser().getUid());
 	}
+
+	@Override
+	public List<ActivityQuestionsModel> getLast24HoursPostedQuestions()
+	{
+		// XXX Auto-generated method stub
+		return liveChatDao.getLast24HoursPostedQuestions(userService.getCurrentUser().getUid());
+	}
+
 
 }

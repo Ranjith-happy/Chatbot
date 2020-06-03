@@ -23,4 +23,6 @@ public interface LiveChatFacades
 	List<CustomerData> getActiveCustomerList();
 
 	boolean saveActivityQuestions(ActivityQuestions activityQuestions);
+
+	List<ActivityQuestions> getLast24HoursPostedQuestions();
 }

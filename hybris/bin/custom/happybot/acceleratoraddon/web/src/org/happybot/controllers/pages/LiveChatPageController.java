@@ -16,6 +16,7 @@ import org.chatbot1905.facades.product.data.rest.CommonRestResponseObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,11 +61,21 @@ public class LiveChatPageController extends AbstractPageController
 	}
 
 
+
 	@ResponseBody
 	@PostMapping(value = "/saveActivityQuestions")
-	public CommonRestResponseObject saveQuestions(final ActivityQuestions activityQuestions)
+	public CommonRestResponseObject saveQuestions(@RequestBody
+	final ActivityQuestions activityQuestions)
 	{
 		liveChatFacades.saveActivityQuestions(activityQuestions);
 		return WebUtils.createResponseObject("success");
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/getActivityQuestions")
+	public CommonRestResponseObject getLast24hoursQuestions()
+	{
+		final List<ActivityQuestions> questionsList = liveChatFacades.getLast24HoursPostedQuestions();
+		return WebUtils.createResponseObject(questionsList);
 	}
 }

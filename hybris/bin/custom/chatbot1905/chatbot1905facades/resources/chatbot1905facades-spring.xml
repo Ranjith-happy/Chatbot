@@ -207,4 +207,16 @@
     <bean id="activitYQuestionsPopulator" class="org.chatbot1905.facades.livechat.populator.ActivitYQuestionsPopulator" >
 
 	</bean>
+	
+	 <bean id="getActivityQuestionsConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="org.chatbot1905.facades.product.data.ActivityQuestions"/>
+			<property name="populators">
+				<list>
+					<ref bean="getActivityQuestionsPopulator"/>
+				</list>
+			</property>
+	</bean>
+    <bean id="getActivityQuestionsPopulator" class="org.chatbot1905.facades.livechat.populator.GetActivityQuestionsPopulator" >
+
+	</bean>
 </beans>
