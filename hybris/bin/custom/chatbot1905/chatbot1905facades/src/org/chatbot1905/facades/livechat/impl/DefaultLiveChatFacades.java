@@ -15,6 +15,8 @@ import javax.annotation.Resource;
 
 import org.chatbot1905.core.livechat.service.LiveChatService;
 import org.chatbot1905.facades.livechat.LiveChatFacades;
+import org.chatbot1905.facades.product.data.ActivityQuestions;
+import org.happybot.model.ActivityQuestionsModel;
 
 
 /**
@@ -35,6 +37,9 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 
 	@Resource(name = "customerConverter")
 	private Converter<UserModel, CustomerData> customerConverter;
+
+	@Resource(name = "activityQuestionsConverter")
+	private Converter<ActivityQuestions, ActivityQuestionsModel> activityQuestionsConverter;
 
 	@Override
 	public boolean updateLikesCount(final String userId)
@@ -62,6 +67,15 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	{
 		//customerConverter.convertAll(liveChatService.getActiveCustomerList());
 		return customerConverter.convertAll(liveChatService.getActiveCustomerList());
+	}
+
+	@Override
+	public boolean saveActivityQuestions(final ActivityQuestions activityQuestions)
+	{
+		// XXX Auto-generated method stub
+		final ActivityQuestionsModel activityQuestionsModel = activityQuestionsConverter.convert(activityQuestions);
+		modelService.save(activityQuestionsModel);
+		return true;
 	}
 
 }

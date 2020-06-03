@@ -7,6 +7,8 @@ import de.hybris.platform.commercefacades.user.data.CustomerData;
 
 import java.util.List;
 
+import org.chatbot1905.facades.product.data.ActivityQuestions;
+
 
 /**
  * @author Pooja
@@ -19,4 +21,6 @@ public interface LiveChatFacades
 	boolean updateActiveFlag();
 
 	List<CustomerData> getActiveCustomerList();
+
+	boolean saveActivityQuestions(ActivityQuestions activityQuestions);
 }

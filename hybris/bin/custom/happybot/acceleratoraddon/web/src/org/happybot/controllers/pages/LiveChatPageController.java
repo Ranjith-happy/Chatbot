@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.chatbot1905.facades.livechat.LiveChatFacades;
+import org.chatbot1905.facades.product.data.ActivityQuestions;
 import org.chatbot1905.facades.product.data.rest.CommonRestResponseObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  */
 @Controller
-@RequestMapping(name = "/chat")
+@RequestMapping(value = "/chat")
 public class LiveChatPageController extends AbstractPageController
 {
 
@@ -56,5 +57,14 @@ public class LiveChatPageController extends AbstractPageController
 		//TODO Use populator to populate the user object instead of UserModel
 		final List<CustomerData> userList = liveChatFacades.getActiveCustomerList();
 		return WebUtils.createResponseObject(userList);
+	}
+
+
+	@ResponseBody
+	@PostMapping(value = "/saveActivityQuestions")
+	public CommonRestResponseObject saveQuestions(final ActivityQuestions activityQuestions)
+	{
+		liveChatFacades.saveActivityQuestions(activityQuestions);
+		return WebUtils.createResponseObject("success");
 	}
 }
