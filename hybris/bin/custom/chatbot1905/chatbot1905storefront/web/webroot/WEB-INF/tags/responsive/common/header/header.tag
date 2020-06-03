@@ -71,10 +71,15 @@
 								<li class="liOffcanvas">
 									<ycommerce:testId code="header_signOut">
 										<c:url value="/logout" var="logoutUrl"/>
-										<a href="${fn:escapeXml(logoutUrl)}">
+										<a href="#" id="mylogout">
 											<spring:theme code="header.link.logout" />
 										</a>
 									</ycommerce:testId>
+								</li>
+								<li class="liOffcanvas">
+										<a href="#" id="likeButton">
+											Like
+										</a>
 								</li>
 							</sec:authorize>
 
