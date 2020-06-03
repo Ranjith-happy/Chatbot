@@ -65,7 +65,6 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	@Override
 	public List<CustomerData> getActiveCustomerList()
 	{
-		//customerConverter.convertAll(liveChatService.getActiveCustomerList());
 		return customerConverter.convertAll(liveChatService.getActiveCustomerList());
 	}
 
