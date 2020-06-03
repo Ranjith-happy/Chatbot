@@ -276,5 +276,65 @@ $('#chatTextarea').keypress(function(event){
     }
 });
 
+$(document).on("click","#mylogout",function(){ 
+	
+	$.ajax({
+		url : ACC.config.encodedContextPath + "/chat/resetflag",
+		type : 'GET',
+		success : function(data) {
+		if(data !== "Server Error")
+		{
+		window.location.href = ACC.config.encodedContextPath + "/logout";
+		}
+	}
 
+  });
+	
+});
+
+/*
+$( window ).on( "load", function() {
+    console.log( "window loaded***************" );
+    var refInterval = window.setInterval('update5()', 3000); // 30 seconds
+	var update5 = function() {
+	    $.ajax({
+	    	url: ACC.config.encodedContextPath + "/addon/happbot",
+			type: 'GET',
+			success : function(data){
+	            $('.voters').html(data);
+	        },
+	    });
+
+		   
+		   
+		};
+update5();
+});*/
+
+
+function fetchdata(){
+	  $.ajax({
+	    	url: ACC.config.encodedContextPath + "/chat/resetflag",
+			type: 'GET',
+			success : function(data){
+	       console.log(data);
+			},
+	    });
+}
+
+function getLikesCount(){
+	  $.ajax({
+	    	url: ACC.config.encodedContextPath + "/chat/resetflag",
+			type: 'GET',
+			success : function(data){
+	       console.log(data);
+			},
+	    });
+}
+
+
+
+	$(document).ready(function(){
+	 setInterval(fetchdata,5000);
+	});
 

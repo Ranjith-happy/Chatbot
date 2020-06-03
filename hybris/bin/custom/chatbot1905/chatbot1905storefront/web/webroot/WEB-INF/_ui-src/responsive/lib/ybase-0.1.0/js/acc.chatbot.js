@@ -277,4 +277,34 @@ $('#chatTextarea').keypress(function(event){
 });
 
 
+$( window ).on( "load", function() {
+    console.log( "window loaded" );
+    var refInterval = window.setInterval('update1()', 30000); // 30 seconds
+	var update1 = function() {
+		console.log( "window loadedassadsa" );
+	/*    $.ajax({
+	    	url: ACC.config.encodedContextPath + "/addon/happbot",
+			type: 'GET',
+			success : function(data){
+	            $('.voters').html(data);
+	        },
+	    });*/
+	};
+update1();
+});
 
+
+function fetchdata(){
+	/* $.ajax({
+	  url: 'fetch_details.php',
+	  type: 'post',
+	  success: function(response){
+	   // Perform operation on the return value
+	   alert(response);
+	  }
+	 });*/
+	}
+
+	$(document).ready(function(){
+	 setInterval(fetchdata,5000);
+	});
