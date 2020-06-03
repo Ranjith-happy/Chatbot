@@ -12,7 +12,7 @@
 $(document).on("click","#mylogout",function(){ 
 	
 	$.ajax({
-		url : ACC.config.encodedContextPath + "/chat/resetFlag",
+		url : ACC.config.encodedContextPath + "/chat/resetflag",
 		type : 'GET',
 		success : function(data) {
 		if(data !== "Server Error")
@@ -107,7 +107,7 @@ $(document).on("click","li.productNameList",function(){
 });
 
 
-$("#productUrl").click(function (event) {
+/*$("#productUrl").click(function (event) {
     event.preventDefault();
     var popupTitle = $(this).data('product-popup-title');
     var url = $(this).attr("href");
@@ -131,5 +131,6 @@ $("#productUrl").click(function (event) {
     	    	
     	}
    
-});
+});*/
+
 
