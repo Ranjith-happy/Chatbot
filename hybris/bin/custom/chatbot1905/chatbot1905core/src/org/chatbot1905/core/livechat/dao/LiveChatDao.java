@@ -18,6 +18,6 @@ public interface LiveChatDao
 {
 	public List<UserModel> getActiveCustomerList(final String uid);
 
-	List<ActivityQuestionsModel> getLast24HoursPostedQuestions(final String uid);
+	List<ActivityQuestionsModel> getLast24HoursPostedQuestions(UserModel user);
 
 }

@@ -23,6 +23,8 @@
     <bean class="org.chatbot1905.facades.product.data.ActivityQuestions">
         <property name="description" type="String"/>
         <property name="productCode" type="String"/>
+        <property name="postedduration" type="String"/>
+        <property name="postedBy" type="String"/>
         <property name="validationError" type="java.lang.Object"/>
 		<property name="responseObject" type="java.lang.Object"/>
     </bean>

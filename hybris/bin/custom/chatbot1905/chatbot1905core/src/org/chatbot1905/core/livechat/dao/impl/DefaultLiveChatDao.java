@@ -7,6 +7,7 @@ import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 import de.hybris.platform.servicelayer.search.SearchResult;
+import de.hybris.platform.util.Config;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class DefaultLiveChatDao implements LiveChatDao
 
 	private static final String CUSTOMER_ActiveList = "SELECT {pk} FROM {user} where {isCurrentlyActive}=1 and {user.uid} !=?uid ";
 
-	private static final String CUSTOMER_LAST_24_HR_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {creationtime} >=?hours";
+	private static final String CUSTOMER_LAST_24_HR_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {creationtime} >=?hours and {createdBy} !=?currentUser";
 
 	@Override
 	public List<UserModel> getActiveCustomerList(final String uid)
@@ -64,12 +65,14 @@ public class DefaultLiveChatDao implements LiveChatDao
 	}
 
 	@Override
-	public List<ActivityQuestionsModel> getLast24HoursPostedQuestions(final String uid)
+	public List<ActivityQuestionsModel> getLast24HoursPostedQuestions(final UserModel user)
 	{
 		final Map<String, Object> params = new HashMap<String, Object>();
 		final StringBuilder builder = new StringBuilder(CUSTOMER_LAST_24_HR_ASKED_QUESTIONS);
+		params.put("currentUser", user);
+		params.put("hours", subtractDaysFromCurrentDate());
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
-		query.addQueryParameter("hours", subtractDaysFromCurrentDate());
+		query.addQueryParameters(params);
 		final SearchResult<ActivityQuestionsModel> result = flexibleSearchService.search(query);
 		final List<ActivityQuestionsModel> propList = new ArrayList<>(result.getResult());
 		return propList;
@@ -79,7 +82,7 @@ public class DefaultLiveChatDao implements LiveChatDao
 
 	private String subtractDaysFromCurrentDate()
 	{
-		final DateTime dateTime = new DateTime().minusHours(24);
+		final DateTime dateTime = new DateTime().minusHours(Integer.parseInt(Config.getParameter("last.twenty.four.hour")));
 		final Date datenew = dateTime.toDate();
 		final SimpleDateFormat formatnew = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return formatnew.format(datenew);
