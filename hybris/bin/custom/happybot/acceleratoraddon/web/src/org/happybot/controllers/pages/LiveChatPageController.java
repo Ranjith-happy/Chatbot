@@ -44,8 +44,7 @@ public class LiveChatPageController extends AbstractPageController
 
 	@ResponseBody
 	@PostMapping(value = "/updatelikes")
-	public CommonRestResponseObject updateLikesCount(@RequestParam("userId")
-	final String userId)
+	public CommonRestResponseObject updateLikesCount(@RequestParam("userId") final String userId)
 	{
 		liveChatFacades.updateLikesCount(userId);
 		return WebUtils.createResponseObject("success");
@@ -55,7 +54,6 @@ public class LiveChatPageController extends AbstractPageController
 	@GetMapping(value = "/active")
 	public CommonRestResponseObject getCurrentlyActiveUser()
 	{
-		//TODO Use populator to populate the user object instead of UserModel
 		final List<CustomerData> userList = liveChatFacades.getActiveCustomerList();
 		return WebUtils.createResponseObject(userList);
 	}
@@ -64,8 +62,7 @@ public class LiveChatPageController extends AbstractPageController
 
 	@ResponseBody
 	@PostMapping(value = "/saveActivityQuestions")
-	public CommonRestResponseObject saveQuestions(@RequestBody
-	final ActivityQuestions activityQuestions)
+	public CommonRestResponseObject saveQuestions(@RequestBody final ActivityQuestions activityQuestions)
 	{
 		liveChatFacades.saveActivityQuestions(activityQuestions);
 		return WebUtils.createResponseObject("success");
@@ -75,7 +72,7 @@ public class LiveChatPageController extends AbstractPageController
 	@GetMapping(value = "/getActivityQuestions")
 	public CommonRestResponseObject getLast24hoursQuestions()
 	{
-		final List<ActivityQuestions> questionsList = liveChatFacades.getLast24HoursPostedQuestions();
+		final List<ActivityQuestions> questionsList = liveChatFacades.getPostedQuestions();
 		return WebUtils.createResponseObject(questionsList);
 	}
 }

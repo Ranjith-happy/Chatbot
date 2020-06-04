@@ -66,7 +66,6 @@ public class DefaultLiveChatDao implements LiveChatDao
 	@Override
 	public List<ActivityQuestionsModel> getLast24HoursPostedQuestions(final String uid)
 	{
-		// XXX Auto-generated method stub
 		final Map<String, Object> params = new HashMap<String, Object>();
 		final StringBuilder builder = new StringBuilder(CUSTOMER_LAST_24_HR_ASKED_QUESTIONS);
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());

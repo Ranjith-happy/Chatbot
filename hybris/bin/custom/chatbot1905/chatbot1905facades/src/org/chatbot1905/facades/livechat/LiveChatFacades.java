@@ -24,5 +24,5 @@ public interface LiveChatFacades
 
 	boolean saveActivityQuestions(ActivityQuestions activityQuestions);
 
-	List<ActivityQuestions> getLast24HoursPostedQuestions();
+	List<ActivityQuestions> getPostedQuestions();
 }

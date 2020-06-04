@@ -80,7 +80,7 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	}
 
 	@Override
-	public List<ActivityQuestions> getLast24HoursPostedQuestions()
+	public List<ActivityQuestions> getPostedQuestions()
 	{
 		return getActivityQuestionsConverter.convertAll(liveChatService.getLast24HoursPostedQuestions());
 	}
