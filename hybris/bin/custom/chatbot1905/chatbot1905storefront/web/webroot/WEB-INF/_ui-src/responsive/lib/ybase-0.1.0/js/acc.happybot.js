@@ -135,6 +135,11 @@ $(document).on("click","li.productNameList",function(){
 
 
 $(document).on("click","#send",function(){
+	/*$(".solTitle a").click(function() {
+        //Do stuff when clicked
+    });
+	*/var textAreaContent = $("#liveChatText").val();
+	alert("textAreaContent======"+textAreaContent);
 	jQuery.ajax({
 	    url: ACC.config.encodedContextPath + "/chat/saveActivityQuestions",
 	    type: "POST",
@@ -146,5 +151,4 @@ $(document).on("click","#send",function(){
 	    }
 	}); 
 	});
-
 

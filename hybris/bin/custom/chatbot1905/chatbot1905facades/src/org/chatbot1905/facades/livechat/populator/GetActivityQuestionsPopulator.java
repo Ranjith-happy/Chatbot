@@ -24,7 +24,10 @@ public class GetActivityQuestionsPopulator implements Populator<ActivityQuestion
 	public void populate(final ActivityQuestionsModel source, final ActivityQuestions target) throws ConversionException
 	{
 		target.setDescription(source.getDescription());
-		target.setProductCode(source.getProduct().getCode());
+		if (source.getProduct() != null)
+		{
+			target.setProductCode(source.getProduct().getCode());
+		}
 		target.setPostedduration(postedDuration(source));
 		target.setPostedBy(source.getCreatedBy().getName());
 	}
