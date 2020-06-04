@@ -62,7 +62,8 @@ public class LiveChatPageController extends AbstractPageController
 
 	@ResponseBody
 	@PostMapping(value = "/saveActivityQuestions")
-	public CommonRestResponseObject saveQuestions(@RequestBody final ActivityQuestions activityQuestions)
+	public CommonRestResponseObject saveQuestions(@RequestBody
+	final ActivityQuestions activityQuestions)
 	{
 		liveChatFacades.saveActivityQuestions(activityQuestions);
 		return WebUtils.createResponseObject("success");
