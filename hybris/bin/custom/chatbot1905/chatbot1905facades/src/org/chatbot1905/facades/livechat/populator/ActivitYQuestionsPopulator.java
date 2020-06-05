@@ -31,7 +31,10 @@ public class ActivitYQuestionsPopulator implements Populator<ActivityQuestions, 
 	{
 		// XXX Auto-generated method stub
 		target.setDescription(source.getDescription());
-		target.setProduct(productService.getProductForCode(source.getProductCode()));
+		if (source.getProductCode() != null)
+		{
+			target.setProduct(productService.getProductForCode(source.getProductCode()));
+		}
 		target.setCreatedBy(userService.getCurrentUser());
 		target.setIsActive(true);
 	}

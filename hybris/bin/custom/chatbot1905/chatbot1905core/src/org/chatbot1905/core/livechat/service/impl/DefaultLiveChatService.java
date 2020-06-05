@@ -3,6 +3,8 @@
  */
 package org.chatbot1905.core.livechat.service.impl;
 
+import de.hybris.platform.commerceservices.search.pagedata.PageableData;
+import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
 import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.user.UserService;
 
@@ -35,10 +37,10 @@ public class DefaultLiveChatService implements LiveChatService
 	}
 
 	@Override
-	public List<ActivityQuestionsModel> getLast24HoursPostedQuestions()
+	public SearchPageData<ActivityQuestionsModel> getLast24HoursPostedQuestions(final PageableData pageableData)
 	{
 		// XXX Auto-generated method stub
-		return liveChatDao.getLast24HoursPostedQuestions(userService.getCurrentUser().getUid());
+		return liveChatDao.getLast24HoursPostedQuestions(userService.getCurrentUser(), pageableData);
 	}
 
 
