@@ -3,6 +3,8 @@
  */
 package org.chatbot1905.core.livechat.service;
 
+import de.hybris.platform.commerceservices.search.pagedata.PageableData;
+import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
 import de.hybris.platform.core.model.user.UserModel;
 
 import java.util.List;
@@ -18,5 +20,5 @@ public interface LiveChatService
 {
 	List<UserModel> getActiveCustomerList();
 
-	List<ActivityQuestionsModel> getLast24HoursPostedQuestions();
+	SearchPageData<ActivityQuestionsModel> getLast24HoursPostedQuestions(final PageableData pageableData);
 }

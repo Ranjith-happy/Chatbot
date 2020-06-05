@@ -37,6 +37,7 @@ public class ActivitYQuestionsPopulator implements Populator<ActivityQuestions, 
 		}
 		target.setCreatedBy(userService.getCurrentUser());
 		target.setIsActive(true);
+
 	}
 
 }
