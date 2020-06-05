@@ -8,8 +8,7 @@
     <extension name='commerceservicesbackoffice' />
     <extension name='solrfacetsearchbackoffice' />
     <extension name='solrserver' />
-    <extension name='ycommercewebservices' />
-    <extension name='ycommercewebservicestest' />
+   
     <extension name='electronicsstore' />
     <extension name='apparelstore' />
     <extension name='captchaaddon' />
@@ -101,6 +100,6 @@
     <extension name='chatbot1905facades' />
     <extension name='chatbot1905test' />
     <extension name='happybot' />
-	
+	 <extension name='happyWebservices' />
   </extensions>
 </hybrisconfig>

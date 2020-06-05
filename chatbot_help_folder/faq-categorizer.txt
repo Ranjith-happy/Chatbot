@@ -131,3 +131,5 @@ place-order can you place order for this product?
 place-order place order for
 place-order place order
 addto-cart add to cart
+search-yes  yes
+search-no   no
