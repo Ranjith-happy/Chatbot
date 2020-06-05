@@ -19,4 +19,6 @@ public interface LiveChatService
 	List<UserModel> getActiveCustomerList();
 
 	List<ActivityQuestionsModel> getLast24HoursPostedQuestions();
+
+	List<ActivityQuestionsModel> getActivityAnswers();
 }

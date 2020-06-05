@@ -15,7 +15,9 @@ import javax.annotation.Resource;
 
 import org.chatbot1905.core.livechat.service.LiveChatService;
 import org.chatbot1905.facades.livechat.LiveChatFacades;
+import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
+import org.happybot.model.ActivityAnswersModel;
 import org.happybot.model.ActivityQuestionsModel;
 
 
@@ -43,6 +45,12 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 
 	@Resource(name = "getActivityQuestionsConverter")
 	private Converter<ActivityQuestionsModel, ActivityQuestions> getActivityQuestionsConverter;
+
+	@Resource(name = "activityAnswersConverter")
+	private Converter<ActivityAnswers, ActivityAnswersModel> activityAnswersConverter;
+
+	@Resource(name = "getActivityAnswersConverter")
+	private Converter<ActivityQuestionsModel, ActivityQuestions> getActivityAnswersConverter;
 
 	@Override
 	public boolean updateLikesCount(final String userId)
@@ -83,6 +91,20 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	public List<ActivityQuestions> getPostedQuestions()
 	{
 		return getActivityQuestionsConverter.convertAll(liveChatService.getLast24HoursPostedQuestions());
+	}
+
+	@Override
+	public boolean saveActivityAnswers(final ActivityAnswers activityAnswers)
+	{
+		final ActivityAnswersModel activityAnswersModel = activityAnswersConverter.convert(activityAnswers);
+		modelService.save(activityAnswersModel);
+		return false;
+	}
+
+	@Override
+	public List<ActivityQuestions> getActivityAnswers()
+	{
+		return getActivityAnswersConverter.convertAll(liveChatService.getActivityAnswers());
 	}
 
 }

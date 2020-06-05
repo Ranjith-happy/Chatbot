@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.chatbot1905.facades.livechat.LiveChatFacades;
+import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
 import org.chatbot1905.facades.product.data.rest.CommonRestResponseObject;
 import org.springframework.stereotype.Controller;
@@ -75,5 +76,22 @@ public class LiveChatPageController extends AbstractPageController
 	{
 		final List<ActivityQuestions> questionsList = liveChatFacades.getPostedQuestions();
 		return WebUtils.createResponseObject(questionsList);
+	}
+
+	@ResponseBody
+	@PostMapping(value = "/saveActivityAnswers")
+	public CommonRestResponseObject saveAnswers(@RequestParam("activityAnswers")
+	final ActivityAnswers activityAnswers)
+	{
+		liveChatFacades.saveActivityAnswers(activityAnswers);
+		return WebUtils.createResponseObject("success");
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/getActivityAnswers")
+	public CommonRestResponseObject getActivityAnswers()
+	{
+		final List<ActivityQuestions> answersList = liveChatFacades.getActivityAnswers();
+		return WebUtils.createResponseObject(answersList);
 	}
 }

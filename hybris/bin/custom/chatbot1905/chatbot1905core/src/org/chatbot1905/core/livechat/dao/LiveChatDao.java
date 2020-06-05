@@ -20,4 +20,6 @@ public interface LiveChatDao
 
 	List<ActivityQuestionsModel> getLast24HoursPostedQuestions(UserModel user);
 
+	List<ActivityQuestionsModel> getActivityAnswers(final String uid);
+
 }

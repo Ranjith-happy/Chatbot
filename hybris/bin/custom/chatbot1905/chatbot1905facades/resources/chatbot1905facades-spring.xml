@@ -219,4 +219,34 @@
     <bean id="getActivityQuestionsPopulator" class="org.chatbot1905.facades.livechat.populator.GetActivityQuestionsPopulator" >
 
 	</bean>
+
+	<bean id="activityAnswersConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.happybot.model.ActivityAnswersModel" />
+		<property name="populators">
+			<list>
+				<ref bean="activityAnswersPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="activityAnswersPopulator"
+		class="org.chatbot1905.facades.livechat.populator.ActivityAnswersPopulator"></bean>
+
+	<bean id="getActivityAnswersConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.chatbot1905.facades.product.data.ActivityAnswers" />
+		<property name="populators">
+			<list>
+				<ref bean="getActivityAnswersPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="getActivityAnswersPopulator"
+		class="org.chatbot1905.facades.livechat.populator.GetActivityAnswersPopulator">
+
+	</bean>
+	
+	
 </beans>

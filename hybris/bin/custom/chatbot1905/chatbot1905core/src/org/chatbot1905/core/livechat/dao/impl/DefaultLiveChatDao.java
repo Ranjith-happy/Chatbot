@@ -51,6 +51,8 @@ public class DefaultLiveChatDao implements LiveChatDao
 
 	private static final String CUSTOMER_LAST_24_HR_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {creationtime} >=?hours and {createdBy} !=?currentUser";
 
+	private static final String CUSTOMER_ANSWERED_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {createdby} ='currentUser'";
+
 	@Override
 	public List<UserModel> getActiveCustomerList(final String uid)
 	{
@@ -86,5 +88,27 @@ public class DefaultLiveChatDao implements LiveChatDao
 		final Date datenew = dateTime.toDate();
 		final SimpleDateFormat formatnew = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return formatnew.format(datenew);
+	}
+
+	private String subtractMonthsFromCurrentDate()
+	{
+		final DateTime dateTime = new DateTime().minusMonths(1);
+		final Date datenew = dateTime.toDate();
+		final SimpleDateFormat formatnew = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		return formatnew.format(datenew);
+	}
+
+	public List<ActivityQuestionsModel> getActivityAnswers(final String uid)
+	{
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(CUSTOMER_ANSWERED_ASKED_QUESTIONS);
+		params.put("uid", uid);
+		params.put("creationTime", subtractMonthsFromCurrentDate());
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final SearchResult<ActivityQuestionsModel> result = flexibleSearchService.search(query);
+		final List<ActivityQuestionsModel> propList = new ArrayList<>(result.getResult());
+		return propList;
+
 	}
 }

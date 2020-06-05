@@ -7,6 +7,7 @@ import de.hybris.platform.commercefacades.user.data.CustomerData;
 
 import java.util.List;
 
+import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
 
 
@@ -25,4 +26,8 @@ public interface LiveChatFacades
 	boolean saveActivityQuestions(ActivityQuestions activityQuestions);
 
 	List<ActivityQuestions> getPostedQuestions();
+
+	boolean saveActivityAnswers(ActivityAnswers activityAnswers);
+
+	List<ActivityQuestions> getActivityAnswers();
 }
