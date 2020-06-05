@@ -1,21 +1,23 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ attribute name="productCode" required="true"  type="java.lang.String" %>
+<%@ attribute name="productName" required="true"  type="java.lang.String" %>
 <jsp:useBean id="now" class="java.util.Date" />
 <div id="chatApp">
 
 
 <div class="chatBox" id="chatBox" hidden>
-  <div class="card " id="chatBot">
-
-			<header class="card-header header-title">
-				<p class="card-header-title">
-					<!--  <i class="fa fa-circle is-online"></i> -->
-					Message <button id="livechat" style="background-color:brown"><b>LiveChat</b></button>
-				</p>
-				<a class="card-header-icon" id="chat-close" title="close chatbot">
-					<span class="icon"> <i class="fa fa-close"></i>
-				</span>
-				</a>
-			</header>
+  <div class="card">
+ 
+ <header class="card-header header-title">
+    <p class="card-header-title">
+     <!--  <i class="fa fa-circle is-online"></i> -->Message
+    </p>
+    <a class="card-header-icon" id="chat-close" title="close chatbot">
+      <span class="icon">
+        <i class="fa fa-close"></i>
+      </span>
+    </a>
+  </header>
  <!--  
   <div class="header">
 <span class="title">
@@ -38,11 +40,7 @@ what's on your mind?
        </div>
       <div class="chat-message-group">
         <div class="chat-messages">
-          <div class="message">Hi ! Welcome to our store. What are you looking for. Do you want to search any of our products?</div>
-         <div>
-          <button type="button" id="idyes" data-value="yes" >YES</button>
-           <button type="button" id="idno" data-value="no" >NO</button>
-          </div>
+          <div class="message">How may I help you for this product ${productName}</div>
           <div class="from">Today <fmt:formatDate type="time" dateStyle="short" timeStyle="short" value="${now}" /></div>
         </div>
       </div>
@@ -66,7 +64,7 @@ what's on your mind?
       </div>
   <footer class="card-footer" id="chatBox-textbox">
     <div class="textContent">
-      <textarea id="chatTextarea" class="chat-textarea" placeholder="Type message here..."></textarea>
+      <textarea id="chatTextareaProduct" data-value="${productCode}" class="chat-textarea" placeholder="Type message here..."></textarea>
       
       <div id="start-record-btn" class="fa fa-microphone" style="font-size:24px; color:#0f7384; top:-5px"></div>
       
@@ -77,53 +75,11 @@ what's on your mind?
         <i class="fa fa-smile-o fa-5" aria-hidden="true"></i>
       </a> -->
       
-    <a class="button-chatbot is-white" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>
+    <a class="button-chatbot-product is-white" data-value="${productCode}" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>
     
     </div>
     
   </footer>
-  </div>
-</div>
-
-<div class="card" id="liveChat" hidden> 
- 
- <header class="card-header header-title">
-    <p class="card-header-title">
-     <!--  <i class="fa fa-circle is-online"></i> -->Chat Live with others 
-    </p>
-    <a class="card-header-icon" id="live-chat-close" title="close chatbot">
-      <span class="icon">
-        <i class="fa fa-close"></i>
-      </span>
-    </a>
-  </header>
- <div id="chatbox-area" data-toggle="1">
-  <div class="card-content chat-content" id="chatbox-content">
-    <div class="content">
-      <div class="chat-message-group">
-        <div class="chat-thumb">
-          <figure class="image is-32x32">
-            
-          </figure>
-        </div>
-       </div>
-      <div class="chat-message-group">
-							<div class="textContent">
-								<textarea id="liveChatText" class="chat-textarea"
-									placeholder="Type your question here.."></textarea>
-
-								<div class="send-icon" id="postQuestion">
-									<a class="button-chatbot is-white" title="send message"><i
-										class="fa fa-paper-plane" aria-hidden="true"></i></a>
-								</div>
-							</div>
-						</div>
-							<div class="show-questions">
-					 	</div>					
- <div class="chat-message-group typing-text1" hidden>
-		</div>				
-    </div>
-  </div>
   </div>
 </div>
 </div>

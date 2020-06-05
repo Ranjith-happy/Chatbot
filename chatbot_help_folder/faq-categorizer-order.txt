@@ -1,0 +1,11 @@
+order-inquiry	  consignment status
+order-inquiry  	  current consignment status of my order
+order-inquiry     where is the order consignment
+order-inquiry	  what happened to my order
+delivery-info	  when will I get my order
+delivery-info	  when will I receive my order
+delivery-info	  when shall i expect my order delivery
+expadite-delivery Can you expidite my delivery?
+expadite-delivery speed-up my order delivery
+productdetail-inquiry  shall i exchange my old product
+productdetail-inquiry Do i get special discount on exchange
