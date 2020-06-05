@@ -89,7 +89,8 @@ what's on your mind?
  
  <header class="card-header header-title">
     <p class="card-header-title">
-     <!--  <i class="fa fa-circle is-online"></i> -->Chat Live with others 
+     Chat Live with others 
+     <button id="botchat" style="background-color:brown"><b>Chat Bot</b></button>
     </p>
     <a class="card-header-icon" id="live-chat-close" title="close chatbot">
       <span class="icon">
@@ -119,9 +120,10 @@ what's on your mind?
 							</div>
 						</div>
 							<div class="show-questions">
-					 	</div>					
+					 	
  <div class="chat-message-group typing-text1" hidden>
-		</div>				
+		</div>			
+		</div>						
     </div>
   </div>
   </div>

@@ -31,6 +31,8 @@ import de.hybris.platform.commerceservices.storefinder.data.StoreFinderSearchPag
 import de.hybris.platform.commerceservices.strategies.CheckoutCustomerStrategy;
 import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.core.model.user.CustomerModel;
+import de.hybris.platform.jalo.JaloSession;
+import de.hybris.platform.jalo.user.User;
 import de.hybris.platform.order.CartService;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.servicelayer.model.ModelService;
@@ -99,7 +101,7 @@ import opennlp.tools.util.model.ModelUtil;
 public class HappyBotAddonPageController extends AbstractSearchPageController
 {
 
-
+	private static final String CHAT_CATEGORY = "chat_category";
 	@Resource(name = "productSearchFacade")
 	private ProductSearchFacade<ProductData> productSearchFacade;
 
@@ -210,6 +212,9 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 
 		final ChatBotResponseData chatBotResponseData = new ChatBotResponseData();
 
+		final JaloSession session = JaloSession.getCurrentSession();
+
+		final User user = session.getUser();
 
 		final BaseSiteModel currentSite = getBaseSiteService().getCurrentBaseSite();
 		final List<CatalogModel> productCatalogs = getBaseSiteService().getProductCatalogs(currentSite);
@@ -291,6 +296,8 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 		return "addon:/happybot/pages/bot/chatbotResponse";
 	}
 
+
+
 	/**
 	 * @throws IOException
 	 * @throws FileNotFoundException
@@ -310,6 +317,24 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 			answer = "Did you really mean" + sentence;
 		}
 
+		if (category.equalsIgnoreCase("search-yes"))
+		{
+			model.addAttribute(CHAT_CATEGORY, "search-yes");
+			answer = "Please select the category of which you want the product";
+		}
+
+		if (category.equalsIgnoreCase("go-for"))
+		{
+			model.addAttribute(CHAT_CATEGORY, "go-for");
+			answer = "Kindly provide the specification";
+		}
+
+		if (category.equalsIgnoreCase("search-no"))
+		{
+			model.addAttribute(CHAT_CATEGORY, "search-no");
+			answer = "Sure !We are Here to assist you.kindly provide your query";
+		}
+
 		if (category.equalsIgnoreCase("product-inquiry"))
 		{
 			final TokenNameFinderModel productDataModels = trainProductDataModel();
@@ -318,7 +343,7 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 			final List<ProductData> solrProductResult = findProductSolr(prdSearchTerm);
 			if (solrProductResult.isEmpty())
 			{
-				answer = "Sorry we could not find the product your searching for.. dont worry we will let you know once we find it our store back.";
+				answer = "Sorry we could not find the product you are searching for.. dont worry we will let you know once we find it our store back.";
 			}
 			else
 			{
@@ -366,6 +391,7 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 				chatBotResponseData.setOrderData(orderDataList);
 
 			}
+			model.addAttribute(CHAT_CATEGORY, "order-status");
 		}
 		if (category.equalsIgnoreCase("place-order"))
 		{

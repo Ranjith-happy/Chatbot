@@ -10,6 +10,7 @@ import de.hybris.platform.servicelayer.user.UserService;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
 import org.happybot.model.ActivityQuestionsModel;
 
@@ -26,12 +27,14 @@ public class ActivitYQuestionsPopulator implements Populator<ActivityQuestions, 
 	@Resource(name = "userService")
 	private UserService userService;
 
-	@Override
 	public void populate(final ActivityQuestions source, final ActivityQuestionsModel target) throws ConversionException
 	{
-		// XXX Auto-generated method stub
+
 		target.setDescription(source.getDescription());
-		target.setProduct(productService.getProductForCode(source.getProductCode()));
+		if (StringUtils.isNotBlank(source.getProductCode()))
+		{
+			target.setProduct(productService.getProductForCode(source.getProductCode()));
+		}
 		target.setCreatedBy(userService.getCurrentUser());
 		target.setIsActive(true);
 	}

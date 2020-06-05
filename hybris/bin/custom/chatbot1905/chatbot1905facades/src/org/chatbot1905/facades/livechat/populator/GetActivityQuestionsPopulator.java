@@ -20,18 +20,6 @@ import org.happybot.model.ActivityQuestionsModel;
 public class GetActivityQuestionsPopulator implements Populator<ActivityQuestionsModel, ActivityQuestions>
 {
 
-	@Override
-	public void populate(final ActivityQuestionsModel source, final ActivityQuestions target) throws ConversionException
-	{
-		target.setDescription(source.getDescription());
-		if (source.getProduct() != null)
-		{
-			target.setProductCode(source.getProduct().getCode());
-		}
-		target.setPostedduration(postedDuration(source));
-		target.setPostedBy(source.getCreatedBy().getName());
-	}
-
 	public String postedDuration(final ActivityQuestionsModel activityQuestionsModel)
 	{
 		String msg = "";
@@ -50,6 +38,23 @@ public class GetActivityQuestionsPopulator implements Populator<ActivityQuestion
 			msg = hour + " hour " + minute + " minutes ago";
 		}
 		return msg;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.hybris.platform.converters.Populator#populate(java.lang.Object, java.lang.Object)
+	 */
+	public void populate(final ActivityQuestionsModel source, final ActivityQuestions target) throws ConversionException
+	{
+		target.setDescription(source.getDescription());
+		if (source.getProduct() != null)
+		{
+			target.setProductCode(source.getProduct().getCode());
+		}
+		target.setPostedduration(postedDuration(source));
+		target.setPostedBy(source.getCreatedBy().getName());
+
 	}
 
 }

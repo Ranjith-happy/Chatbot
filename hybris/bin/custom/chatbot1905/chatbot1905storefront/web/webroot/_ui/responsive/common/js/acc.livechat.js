@@ -6,12 +6,7 @@ ACC.chatbot = {
 
 $(document).ready(function ()
 {
-//	if ($('#registerForm').html() != null || $('#updateEmailForm').html() != null)
-//	{
 		$('#chatbox-content').scrollTop($('#chatbox-content')[0].scrollHeight);
-//	}
-		
-		
 });
 
 
@@ -21,6 +16,10 @@ $('#livechat').click(function(){
 	getQuestions();
 })
 
+$('#botchat').click(function(){
+	$('#chatBot').show();
+	$('#liveChat').hide();
+})
 $('#live-chat-close').click(function(){
 	$('#chatBot').hide();
 	$('#liveChat').hide();
@@ -35,8 +34,6 @@ function sendMessage(pCode,addtoCart){
 	var time = new Date();
 	var timeText = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 	if(textAreaContent.trim() == ''){
-		
-
 	}else{
 		
 			var userWriteContent = '<div class="chat-message-group writer-user"><div class="chat-messages"><div class="message">'
@@ -161,15 +158,16 @@ function sendMessage(pCode,addtoCart){
 	
 }
 function  getQuestions(){
+	$('.show-questions div').html('');
 	  $.ajax({
 	    	url: ACC.config.encodedContextPath + "/chat/getActivityQuestions",
 			type: 'GET',
 			success : function(data){
 				 for (var key in data.responseObject) {
-						var userWriteContent ='<div>'+data.responseObject[key].description+'</div><div class="chat-message-group"><div class="textContent"><textarea id="liveChatText" class="chat-textarea" placeholder="Type your answer here.."></textarea><div class="send-icon" id="postQuestion"> <a class="button-chatbot is-white" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>	</div>	</div>';
+						var userWriteContent ='<div class="livechatBox"><b>'+data.responseObject[key].postedBy+':</b>'+data.responseObject[key].description+'&nbsp'+data.responseObject[key].postedduration+'</div><div class="chat-message-group"><div class="textContent"><textarea id="liveChatText" class="chat-textarea" placeholder="Type your answer here.."></textarea><div class="send-icon" id="postQuestion"> <a class="button-chatbot is-white" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>	</div>	</div>';
 						$( userWriteContent ).insertBefore( ".typing-text1" );
-						
-		            }
+				 }
+				 
 	        },
 	    });
 }
@@ -182,53 +180,21 @@ $('#chatTextarea').keypress(function(event){
 });
 
 
-$( window ).on( "load", function() {
-    console.log( "window loaded" );
-    var refInterval = window.setInterval('update1()', 30000); // 30 seconds
-	var update1 = function() {
-		console.log( "window loadedassadsa" );
-	/*    $.ajax({
-	    	url: ACC.config.encodedContextPath + "/addon/happbot",
-			type: 'GET',
-			success : function(data){
-	            $('.voters').html(data);
-	        },
-	    });*/
-	};
-update1();
-});
-
-
-function fetchdata(){
-	/* $.ajax({
-	  url: 'fetch_details.php',
-	  type: 'post',
-	  success: function(response){
-	   // Perform operation on the return value
-	   alert(response);
-	  }
-	 });*/
-	}
-
-	$(document).ready(function(){
-	 setInterval(fetchdata,5000);
-	});
-	
 	$(document).ready(function() {
 	    $("#postQuestion a").click(function() {
 	    	var textAreaContent = $("#liveChatText").val();
-	    	//alert("textAreaContent======"+textAreaContent);
 	    	var uri = ACC.config.encodedContextPath + "/chat/saveActivityQuestions";
 	    	var postData={};
-	    	postData.description="retyguhjlk;l,";
-	    	postData.productCode="123456";
+	    	postData.description=textAreaContent;
+	    	postData.productCode="1981415";
 	    	jQuery.ajax({
 	    	    url: uri,
 	    	    type: "POST",
 	    	    data: JSON.stringify(postData),
 	    	    dataType: 'json',
+	    	    contentType: "application/json",
 	    	    success: function(result) {
-	    	    alert("hii");
+	    	    	$("#liveChatText").val("");
 	    	    }
 	    	}); 
 

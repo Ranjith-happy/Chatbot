@@ -37,8 +37,7 @@ public class DefaultLiveChatService implements LiveChatService
 	@Override
 	public List<ActivityQuestionsModel> getLast24HoursPostedQuestions()
 	{
-		// XXX Auto-generated method stub
-		return liveChatDao.getLast24HoursPostedQuestions(userService.getCurrentUser().getUid());
+		return liveChatDao.getLast24HoursPostedQuestions(userService.getCurrentUser());
 	}
 
 

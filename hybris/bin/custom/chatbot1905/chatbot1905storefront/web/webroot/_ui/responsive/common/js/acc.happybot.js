@@ -143,7 +143,7 @@ $(document).on("click","#send",function(){
 	jQuery.ajax({
 	    url: ACC.config.encodedContextPath + "/chat/saveActivityQuestions",
 	    type: "POST",
-	    data: JSON.stringify({description: "how is this product quality",productCode: "280916" }),
+	    data: JSON.stringify({description: "what is return policy of this product",productCode: "280916" }),
 	    dataType: "json",
 	    contentType: "application/json",
 	    success: function(result) {
