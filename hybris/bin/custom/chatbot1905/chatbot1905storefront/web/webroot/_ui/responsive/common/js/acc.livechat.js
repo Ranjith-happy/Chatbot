@@ -165,12 +165,13 @@ function sendMessage(pCode,addtoCart){
 	
 }
 function  getQuestions(){
+	//
 	  $.ajax({
 	    	url: ACC.config.encodedContextPath + "/chat/getActivityQuestions",
 			type: 'GET',
 			success : function(data){
-				 for (var key in data.responseObject) {
-						var userWriteContent ='<div>'+data.responseObject[key].description+'</div><div class="chat-message-group"><div class="textContent"><textarea id="liveChatText" class="chat-textarea" placeholder="Type your answer here.."></textarea><div class="send-icon" id="postQuestion"> <a class="button-chatbot is-white" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>	</div>	</div>';
+				 for (var key in data.responseObject.results) {
+					 var userWriteContent ='<div class="livechatBox"><b>'+data.responseObject.results[key].postedBy+':</b>'+data.responseObject.results[key].description+'&nbsp'+data.responseObject.results[key].postedduration+'</div><div class="chat-message-group"><div class="textContent"><textarea id="liveChatText" class="chat-textarea" placeholder="Type your answer here.."></textarea><div class="send-icon" id="postQuestion"> <a class="button-chatbot is-white" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>    </div>    </div>';
 						$( userWriteContent ).insertBefore( ".typing-text1" );
 						
 		            }
