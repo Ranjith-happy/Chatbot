@@ -102,7 +102,18 @@
                     </attribute>
                 </attributes>
             </itemtype>
+			<itemtype code="Order" autocreate="false" generate="false">
+         <attributes>
+        <attribute qualifier="expediteDelivery" type="java.lang.Boolean">
+						<modifiers read="true" write="true" optional="true" search="false" />
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+						<persistence type="property"/>
+					</attribute>
+					</attributes>
+        </itemtype>
         </typegroup>
+		
+		
 
     </itemtypes>
 </items>
