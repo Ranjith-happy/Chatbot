@@ -96,24 +96,12 @@ public class LiveChatPageController extends AbstractSearchPageController
 		return WebUtils.createResponseObject("success");
 	}
 
-	/*
-	 * @ResponseBody
-	 *
-	 * @GetMapping(value = "/getActivityAnswers") public CommonRestResponseObject getActivityAnswers() { final
-	 * List<ActivityQuestions> answersList = liveChatFacades.getActivityAnswers(); return
-	 * WebUtils.createResponseObject(answersList); }
-	 */
 	@ResponseBody
-	@GetMapping(value = "/getActivityAnswers")
-	public CommonRestResponseObject getActivityAnswers(@RequestParam(value = "page", defaultValue = "0")
-	final int page, @RequestParam(value = "show", defaultValue = "Page")
-	final ShowMode showMode, final Model model)
-	{
-		final int noIfRecordsinOnePage = Integer.parseInt(Config.getParameter("number.of.records.in.one.page"));
-		final PageableData pageableData = createPageableData(page, noIfRecordsinOnePage, null, showMode);
-		final SearchPageData<ActivityQuestions> searchPageData = liveChatFacades.getActivityAnswers(pageableData);
-		populateModel(model, searchPageData, showMode);
-		return WebUtils.createResponseObject(searchPageData);
-	}
 
+	@GetMapping(value = "/getActivityAnswers")
+	public CommonRestResponseObject getActivityAnswers()
+	{
+		final List<ActivityQuestions> answersList = liveChatFacades.getActivityAnswers();
+		return WebUtils.createResponseObject(answersList);
+	}
 }
