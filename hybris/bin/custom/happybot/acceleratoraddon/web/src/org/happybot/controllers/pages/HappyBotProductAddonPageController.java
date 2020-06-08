@@ -3,46 +3,21 @@
  */
 package org.happybot.controllers.pages;
 
-import de.hybris.platform.acceleratorfacades.order.AcceleratorCheckoutFacade;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractSearchPageController;
-import de.hybris.platform.basecommerce.model.site.BaseSiteModel;
-import de.hybris.platform.catalog.CatalogService;
-import de.hybris.platform.catalog.CatalogVersionService;
-import de.hybris.platform.catalog.model.CatalogModel;
-import de.hybris.platform.category.CategoryService;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
-import de.hybris.platform.cms2.servicelayer.services.CMSSiteService;
-import de.hybris.platform.commercefacades.customer.CustomerFacade;
-import de.hybris.platform.commercefacades.order.CartFacade;
-import de.hybris.platform.commercefacades.order.OrderFacade;
-import de.hybris.platform.commercefacades.order.data.CartData;
-import de.hybris.platform.commercefacades.order.data.CartModificationData;
-import de.hybris.platform.commercefacades.order.data.OrderData;
-import de.hybris.platform.commercefacades.order.data.OrderHistoryData;
+import de.hybris.platform.commercefacades.product.ProductFacade;
 import de.hybris.platform.commercefacades.product.data.ProductData;
-import de.hybris.platform.commercefacades.search.ProductSearchFacade;
-import de.hybris.platform.commercefacades.storefinder.StoreFinderFacade;
-import de.hybris.platform.commercefacades.storelocator.data.PointOfServiceData;
-import de.hybris.platform.commerceservices.enums.SearchQueryContext;
-import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
-import de.hybris.platform.commerceservices.search.pagedata.PageableData;
-import de.hybris.platform.commerceservices.store.data.GeoPoint;
-import de.hybris.platform.commerceservices.storefinder.data.StoreFinderSearchPageData;
-import de.hybris.platform.commerceservices.strategies.CheckoutCustomerStrategy;
-import de.hybris.platform.core.model.order.CartModel;
-import de.hybris.platform.core.model.user.CustomerModel;
-import de.hybris.platform.jalo.JaloSession;
-import de.hybris.platform.jalo.user.User;
-import de.hybris.platform.order.CartService;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.servicelayer.model.ModelService;
-import de.hybris.platform.util.Config;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,9 +32,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
-import org.chatbot1905.facades.coupon.ChatbotCouponFacade;
 import org.happybot.search.data.ChatBotResponseData;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -96,46 +69,16 @@ import opennlp.tools.util.Span;
 import opennlp.tools.util.TrainingParameters;
 import opennlp.tools.util.model.ModelUtil;
 
+
 @Controller
-@RequestMapping(value = "/addon")
-public class HappyBotAddonPageController extends AbstractSearchPageController
+@RequestMapping(value = "/product")
+public class HappyBotProductAddonPageController extends AbstractSearchPageController
 {
 
 	private static final String CHAT_CATEGORY = "chat_category";
-	@Resource(name = "productSearchFacade")
-	private ProductSearchFacade<ProductData> productSearchFacade;
 
-	@Resource(name = "cmsSiteService")
-	private CMSSiteService cmsSiteService;
-
-	@Resource(name = "categoryService")
-	private CategoryService categoryService;
-
-	private CatalogService catalogService;
-	private CatalogVersionService catalogVersionService;
-
-	@Resource(name = "storeFinderFacade")
-	private StoreFinderFacade storeFinderFacade;
-
-
-	@Resource(name = "customerFacade")
-	private CustomerFacade customerFacade;
-
-
-	@Resource(name = "orderFacade")
-	private OrderFacade orderFacade;
-
-	@Resource(name = "cartFacade")
-	private CartFacade cartFacade;
-
-	@Resource(name = "cartService")
-	private CartService cartService;
-
-	@Resource(name = "chatbotCouponFacade")
-	private ChatbotCouponFacade chatbotCouponFacade;
-
-	@Resource(name = "acceleratorCheckoutFacade")
-	private AcceleratorCheckoutFacade checkoutFacade;
+	@Resource(name = "productVariantFacade")
+	private ProductFacade productFacade;
 
 	private ModelService modelService;
 
@@ -156,44 +99,25 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 		this.modelService = modelService;
 	}
 
-	protected AcceleratorCheckoutFacade getCheckoutFacade()
-	{
-		return checkoutFacade;
-	}
+
 
 	private static Map<String, String> questionAnswer = new HashMap<>();
 
-
-
-	@Required
-	public void setCartService(final CartService cartService)
-	{
-		this.cartService = cartService;
-	}
-
-	private CheckoutCustomerStrategy checkoutCustomerStrategy;
 	/*
 	 * Define answers for each given category.
 	 */
 	static
 	{
 		questionAnswer.put("greeting", "Hello, how can I help you?");
-		questionAnswer.put("product-inquiry", "We have found some results! Check if these are relevant!!");
-		questionAnswer.put("price-inquiry", "Price is $300");
-		questionAnswer.put("conversation-continue", "What else can I help you with?");
-		questionAnswer.put("conversation-complete", "Nice chatting with you. Bbye.");
-		questionAnswer.put("store_locator", "your nereast store is..");
-		questionAnswer.put("place-order", "Thank you. We have received your Order. Here the order number");
-		questionAnswer.put("addto-cart",
-				"Your product is added to cart. You can still add more products. If you are done please confirm to");
-	}
-	private static final Logger LOG = Logger.getLogger(HappyBotAddonPageController.class);
+		questionAnswer.put("order-inquiry", "We have found some results! Check if these are relevant!!");
 
+	}
+	private static final Logger LOG = Logger.getLogger(HappyBotProductAddonPageController.class);
 
 
 
 	@RequestMapping(value = "/happbot", method = RequestMethod.GET)
-	public String getProductDetails(final Model model, @RequestParam("term")
+	public String getProdDetails(final Model model, @RequestParam("term")
 	final String term, @RequestParam(value = "page", defaultValue = "0")
 	final int page, // NOSONAR
 			@RequestParam(value = "show", defaultValue = "Page")
@@ -202,22 +126,13 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 			final String question, @RequestParam(value = "latitude", required = false)
 			final Double latitude, @RequestParam(value = "longitude", required = false)
 			final Double longitude, @RequestParam(value = "contextCategory", required = false)
-			final String contextCategory, final String productCode, final boolean addToCartFlag)
+			final String contextCategory, final String productCode)
 			throws CMSItemNotFoundException, UnknownIdentifierException, FileNotFoundException, IOException
 	{
-		LOG.info("########## ProductDetailsController updateOldPassword() method #####");
-
 
 		String answer = "";
 
 		final ChatBotResponseData chatBotResponseData = new ChatBotResponseData();
-
-		final JaloSession session = JaloSession.getCurrentSession();
-
-		final User user = session.getUser();
-
-		final BaseSiteModel currentSite = getBaseSiteService().getCurrentBaseSite();
-		final List<CatalogModel> productCatalogs = getBaseSiteService().getProductCatalogs(currentSite);
 
 		final DoccatModel models = trainCategorizerModel();
 
@@ -227,26 +142,8 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 			final String userInput = term;
 			List<String> sentanceList = new ArrayList<String>();
 
-			if (productCode.equalsIgnoreCase("TestProduct"))
-			{
-				sentanceList = breakSentences(userInput);
 
-			}
-			else
-			{
-				if (addToCartFlag)
-				{
-					sentanceList.add("add to cart " + productCode);
-
-
-				}
-				else
-				{
-					sentanceList.add("place order for " + productCode);
-				}
-
-
-			}
+			sentanceList = breakSentences(userInput);
 
 			boolean conversationComplete = true;
 
@@ -278,7 +175,7 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 
 				if (answer != null && answer.equals(""))
 				{
-					answer = Config.getParameter("happybot.chatbot.question.category." + category);
+					answer = "Did you mean?";
 				}
 			}
 
@@ -293,10 +190,8 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 		}
 		chatBotResponseData.setResponseText(answer);
 		model.addAttribute("chatBotResponseData", chatBotResponseData);
-		return "addon:/happybot/pages/bot/chatbotResponse";
+		return "addon:/happybot/pages/bot/chatbotResponseProduct";
 	}
-
-
 
 	/**
 	 * @throws IOException
@@ -316,216 +211,21 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 
 			answer = "Did you really mean" + sentence;
 		}
-
-		if (category.equalsIgnoreCase("search-yes"))
-		{
-			model.addAttribute(CHAT_CATEGORY, "search-yes");
-			answer = "Please select the category of which you want the product";
-		}
-
-		if (category.equalsIgnoreCase("go-for"))
-		{
-			model.addAttribute(CHAT_CATEGORY, "go-for");
-			answer = "Kindly provide the specification";
-		}
-
-		if (category.equalsIgnoreCase("search-no"))
-		{
-			model.addAttribute(CHAT_CATEGORY, "search-no");
-			answer = "Sure !We are Here to assist you.kindly provide your query";
-		}
-
-		if (category.equalsIgnoreCase("product-inquiry"))
-		{
-			final TokenNameFinderModel productDataModels = trainProductDataModel();
-			final String prdSearchTerm = findSearchTerm(productDataModels, tokens, sentence);
-			LOG.info("Search term : " + prdSearchTerm);
-			final List<ProductData> solrProductResult = findProductSolr(prdSearchTerm);
-			if (solrProductResult.isEmpty())
-			{
-				answer = "Sorry we could not find the product you are searching for.. dont worry we will let you know once we find it our store back.";
-			}
-			else
-			{
-				chatBotResponseData.setProducts(subList(solrProductResult, 5));
-				model.addAttribute("carousalIndex", randomObj.nextInt());
-
-				answer = answer + " " + questionAnswer.get(category);
-
-
-			}
-		}
-		if (category.equalsIgnoreCase("order-status"))
+		if (category.equalsIgnoreCase("productdetail-inquiry"))
 		{
 
-			List<OrderData> orderDataList = null;
-			final TokenNameFinderModel orderDataModels = trainOrderDataModel();
-			final String ordSearchTerm = findSearchTerm(orderDataModels, tokens, sentence);
-			LOG.info("Search term : " + ordSearchTerm);
-			OrderData orderData = null;
-			List<OrderHistoryData> orderHistoryData = null;
-			if (!sentence.equals(ordSearchTerm))
-			{
-				orderData = orderFacade.getOrderDetailsForCode(ordSearchTerm);
-				if (orderData != null)
-				{
-					final List<OrderData> ordData = new ArrayList<OrderData>();
-					ordData.add(orderData);
-					chatBotResponseData.setOrderData(ordData);
-				}
-			}
-			else
-			{
-				final PageableData pageableData = createPageableData(page, 5, sortCode, showMode);
-				orderHistoryData = orderFacade.getPagedOrderHistoryForStatuses(pageableData).getResults();
-				if (orderHistoryData != null)
-				{
-					chatBotResponseData.setOrderHistoryData(orderHistoryData);
-				}
-			}
+			List<ProductData> productDataList = null;
+			final ProductData productData = productFacade.getProductForCodeAndOptions(productCode, null);
+			productDataList = new ArrayList<ProductData>();
+			productDataList.add(productData);
+			chatBotResponseData.setProducts(productDataList);
 
-			if (null != orderData)
-			{
-				orderDataList = new ArrayList<OrderData>();
-				orderDataList.add(orderData);
-				chatBotResponseData.setOrderData(orderDataList);
-
-			}
-			model.addAttribute(CHAT_CATEGORY, "order-status");
+			answer = "Sure we will provide all the info you want!";
+			model.addAttribute(CHAT_CATEGORY, "productdetail-inquiry");
 		}
-		if (category.equalsIgnoreCase("place-order"))
-		{
 
-			final long qty = 1;
-			OrderData orderData = null;
-			try
-			{
-				final String[] parts = sentence.split(" ");
-				String lastWord = parts[parts.length - 1];
 
-				if (null == lastWord || lastWord.isEmpty())
-				{
-					lastWord = productCode;
-				}
-				final CartData cartData = cartFacade.getSessionCart();
-				LOG.info("Cart" + cartData);
 
-				final CartModel cartModel = cartService.getSessionCart();
-				if (null == cartModel.getEntries() || cartModel.getEntries().isEmpty())
-				{
-					final CartModificationData cartModification = cartFacade.addToCart(lastWord, qty);
-					LOG.info("cartModification" + cartModification);
-				}
-
-				try
-				{
-					orderData = getCheckoutFacade().placeOrder();
-				}
-				catch (final Exception e)
-				{
-					answer = "Sorry you can not place order here for this product .Contact customer service Team";
-				}
-				cartService.removeSessionCart();
-			}
-			catch (final CommerceCartModificationException ex)
-			{
-
-				answer = "Sorry you can not place order here for this product. Contact customer service Team";
-			}
-
-			answer = questionAnswer.get(category) + " " + orderData.getCode();
-		}
-		if (category.equalsIgnoreCase("addto-cart"))
-		{
-
-			final long qty = 1;
-			final String[] parts = sentence.split(" ");
-			String lastWord = parts[parts.length - 1];
-
-			try
-			{
-
-				if (null == lastWord || lastWord.isEmpty())
-				{
-					lastWord = productCode;
-				}
-				final CartData cartData = cartFacade.getSessionCart();
-				final CartModificationData cartModification = cartFacade.addToCart(lastWord, qty);
-				final CartModel cartModel = cartService.getSessionCart();
-				cartService.setSessionCart(cartModel);
-
-			}
-			catch (final CommerceCartModificationException ex)
-			{
-
-				answer = "Sorry you can not add this product to cart Contact customer service Team";
-			}
-			answer = questionAnswer.get(category) + "<a href=\"#\" class=\"chatBotAllOrder\" data-value=\"" + lastWord
-					+ "\">Place order</a>";
-
-		}
-		if (category.equalsIgnoreCase("store-finder"))
-		{
-
-			if (latitude != null & longitude != null)
-			{
-				final GeoPoint geoPoint = new GeoPoint();
-				geoPoint.setLatitude(latitude);
-				geoPoint.setLongitude(longitude);
-				final StoreFinderSearchPageData<PointOfServiceData> searchResult = storeFinderFacade.positionSearch(geoPoint,
-						createPageableData(page, 1, sortCode, showMode));
-
-				if (null != searchResult)
-				{
-					final List<PointOfServiceData> pointOfServiceData = searchResult.getResults();
-
-					chatBotResponseData.setPointOfServices(pointOfServiceData);
-					model.addAttribute("mapIndex", randomObj.nextInt());
-
-				}
-				else
-				{
-					answer = "We could not find any store near to your GPS location... Well you can still search by entering zipcode or town";
-				}
-			}
-			else
-			{
-				answer = "We could not find your GPS location... Well you can still search by zipcode or town";
-			}
-		}
-		if (category.equalsIgnoreCase("my-promotions"))
-		{
-			try
-			{
-				chatBotResponseData.setCouponData(subList(chatbotCouponFacade.getAllVouchers(), 6));
-			}
-			catch (final Exception exception)
-			{
-				exception.printStackTrace();
-				answer = "We could not find any promotions at this time. Please try after some time";
-			}
-		}
-		if (category.equalsIgnoreCase("faq-reset-password"))
-		{
-
-			model.addAttribute("contextCategory", category);
-		}
-		if (contextCategory != null && contextCategory.equalsIgnoreCase("faq-reset-password"))
-		{
-
-			model.addAttribute("contextCategory", "");
-			try
-			{
-				customerFacade.forgottenPassword(sentence);
-				answer = "Your password reset mail has been sent to your mail id. Click the link provided to reset.";
-			}
-			catch (final UnknownIdentifierException unknownIdentifierException)
-			{
-				LOG.warn("Email: " + sentence + " does not exist in the database.");
-				answer = "We could not find your email... Please recheck if this is your email" + sentence;
-				model.addAttribute("contextCategory", "faq-reset-password");
-			}
-		}
 
 		return answer;
 	}
@@ -549,7 +249,7 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 	{
 		// faq-categorizer.txt is a custom training data with categories as per our chat
 		// requirements.
-		final File faqFile = new File("D:\\Blitz\\Blitz\\chatbot_help_folder\\faq-categorizer.txt");
+		final File faqFile = new File("D:\\Blitz\\Blitz\\chatbot_help_folder\\faq-categorizer-order.txt");
 		final InputStreamFactory inputStreamFactory = new MarkableFileInputStreamFactory(faqFile);
 
 		final ObjectStream<String> lineStream = new PlainTextByLineStream(inputStreamFactory, StandardCharsets.UTF_8);
@@ -562,8 +262,8 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 		params.put(TrainingParameters.CUTOFF_PARAM, 0);
 
 		// Train a model with classifications from above file.
-		final DoccatModel model = DocumentCategorizerME.train("en", sampleStream, params, factory);
-		return model;
+		final DoccatModel models = DocumentCategorizerME.train("en", sampleStream, params, factory);
+		return models;
 	}
 
 	private static List<String> breakSentences(final String data) throws FileNotFoundException, IOException
@@ -641,6 +341,7 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 
 		// Get best possible category.
 		final double[] probabilitiesOfOutcomes = myCategorizer.categorize(finalTokens);
+
 		category = myCategorizer.getBestCategory(probabilitiesOfOutcomes);
 		LOG.info("Category: " + category);
 
@@ -701,30 +402,27 @@ public class HappyBotAddonPageController extends AbstractSearchPageController
 		return searchTerm;
 	}
 
-	protected int getStoreLocatorPageSize()
+	public void openConnection(final String orderCode) throws IOException
 	{
-		return getSiteConfigService().getInt("storefront.storelocator.pageSize", 0);
+		try
+		{
+			final URL url = new URL(
+					"http://electronics.local:9001/happyWebservices/v2/electronics/orders/expediteDelivery/" + orderCode);
+
+			final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("PUT");
+			final InputStreamReader in = new InputStreamReader(conn.getInputStream());
+			LOG.info("connection Response Code" + conn.getResponseCode());
+			conn.disconnect();
+		}
+		catch (final Exception e)
+		{
+			LOG.info("Error While Connecting" + e);
+		}
+
+
 	}
 
-	protected List<ProductData> findProductSolr(final String productName)
-	{
-		return productSearchFacade.textSearch(productName, SearchQueryContext.SUGGESTIONS).getResults();
-	}
 
-	protected CustomerModel getCurrentUserForCheckout()
-	{
-		return getCheckoutCustomerStrategy().getCurrentUserForCheckout();
-	}
-
-	protected CheckoutCustomerStrategy getCheckoutCustomerStrategy()
-	{
-		return checkoutCustomerStrategy;
-	}
-
-	@Required
-	public void setCheckoutCustomerStrategy(final CheckoutCustomerStrategy checkoutCustomerStrategy)
-	{
-		this.checkoutCustomerStrategy = checkoutCustomerStrategy;
-	}
 
 }

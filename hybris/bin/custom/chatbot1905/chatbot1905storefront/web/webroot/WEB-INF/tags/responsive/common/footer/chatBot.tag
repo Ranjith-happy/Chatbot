@@ -117,57 +117,55 @@ what's on your mind?
 <i class="fa fa-times" aria-hidden="true"></i>
 </button>
 </div> -->
-
-			<div id="chatbox-area" data-toggle="1">
-				<div class="card-content chat-content" id="chatbox-content">
-					<div class="content">
-						<div class="chat-message-group">
-							<div class="chat-thumb">
-								<figure class="image is-32x32">
-
-								</figure>
-							</div>
-						</div>
-						<div class="chat-message-group">
-							<div class="chat-messages">
-								<div class="message">Hi There!!!</div>
-								<div class="from">
-									Today
-									<fmt:formatDate type="time" dateStyle="short" timeStyle="short"
-										value="${now}" />
-								</div>
-							</div>
-						</div>
-						<div class="chat-message-group typing-text" hidden>
-							<div class="typing">Typing</div>
-							<div class="spinner">
-								<div class="bounce1"></div>
-								<div class="bounce2"></div>
-								<div class="bounce3"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="chat-message-group typing-text-display" hidden>
-					<div class="typing">typing</div>
-					<div class="spinner">
-						<div class="bounce1"></div>
-						<div class="bounce2"></div>
-						<div class="bounce3"></div>
-					</div>
-				</div>
-				<footer class="card-footer" id="chatBox-textbox">
-					<div class="textContent">
-						<textarea id="chatTextarea" class="chat-textarea"
-							placeholder="Type message here..."></textarea>
-
-						<div id="start-record-btn" class="fa fa-microphone"
-							style="font-size: 24px; color: #0f7384; top: -5px"></div>
-
-
-						<!--  <div class="text-box chat-textarea" placeholder="Type message here..." id="chatTextarea" contenteditable="true"></div> -->
-						<div class="send-icon">
-							<!-- <a class="button is-white">
+ 
+ <div id="chatbox-area" data-toggle="1">
+  <div class="card-content chat-content" id="chatbox-content">
+    <div class="content">
+      <div class="chat-message-group">
+        <div class="chat-thumb">
+          <figure class="image is-32x32">
+            
+          </figure>
+        </div>
+       </div>
+      <div class="chat-message-group">
+        <div class="chat-messages">
+          <div class="message">Hi ! Welcome to our store. What are you looking for. Do you want to search any of our products?</div>
+         <div>
+          <button type="button" id="idyes" data-value="yes" >YES</button>
+           <button type="button" id="idno" data-value="no" >NO</button>
+          </div>
+          <div class="from">Today <fmt:formatDate type="time" dateStyle="short" timeStyle="short" value="${now}" /></div>
+        </div>
+      </div>
+      <div class="chat-message-group typing-text" hidden>
+        <div class="typing">Typing</div>
+        <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+         </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-message-group typing-text-display" hidden>
+        <div class="typing">typing</div>
+        <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+         </div>
+      </div>
+  <footer class="card-footer" id="chatBox-textbox">
+    <div class="textContent">
+      <textarea id="chatTextarea" class="chat-textarea" placeholder="Type message here..."></textarea>
+      
+      <div id="start-record-btn" class="fa fa-microphone" style="font-size:24px; color:#0f7384; top:-5px"></div>
+      
+      
+     <!--  <div class="text-box chat-textarea" placeholder="Type message here..." id="chatTextarea" contenteditable="true"></div> -->
+      <div class="send-icon" >
+      <!-- <a class="button is-white">
         <i class="fa fa-smile-o fa-5" aria-hidden="true"></i>
       </a> -->
 
