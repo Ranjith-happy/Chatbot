@@ -76,9 +76,8 @@ public class LiveChatPageController extends AbstractSearchPageController
 
 	@ResponseBody
 	@GetMapping(value = "/getActivityQuestions")
-	public CommonRestResponseObject getLast24hoursQuestions(@RequestParam(value = "page", defaultValue = "0")
-	final int page, @RequestParam(value = "show", defaultValue = "Page")
-	final ShowMode showMode,final Model model)
+	public CommonRestResponseObject getLast24hoursQuestions(@RequestParam(value = "page", defaultValue = "0") final int page,
+			@RequestParam(value = "show", defaultValue = "Page") final ShowMode showMode, final Model model)
 	{
 		final int noIfRecordsinOnePage = Integer.parseInt(Config.getParameter("number.of.records.in.one.page"));
 		final PageableData pageableData = createPageableData(page, noIfRecordsinOnePage, null, showMode);
@@ -89,15 +88,13 @@ public class LiveChatPageController extends AbstractSearchPageController
 
 	@ResponseBody
 	@PostMapping(value = "/saveActivityAnswers")
-	public CommonRestResponseObject saveAnswers(@RequestParam("activityAnswers")
-	final ActivityAnswers activityAnswers)
+	public CommonRestResponseObject saveAnswers(@RequestParam("activityAnswers") final ActivityAnswers activityAnswers)
 	{
 		liveChatFacades.saveActivityAnswers(activityAnswers);
 		return WebUtils.createResponseObject("success");
 	}
 
 	@ResponseBody
-
 	@GetMapping(value = "/getActivityAnswers")
 	public CommonRestResponseObject getActivityAnswers()
 	{

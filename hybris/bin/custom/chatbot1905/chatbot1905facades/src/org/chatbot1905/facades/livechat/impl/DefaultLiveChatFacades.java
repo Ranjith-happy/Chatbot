@@ -113,7 +113,7 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	{
 		final ActivityAnswersModel activityAnswersModel = activityAnswersConverter.convert(activityAnswers);
 		modelService.save(activityAnswersModel);
-		return false;
+		return true;
 	}
 
 	@Override
