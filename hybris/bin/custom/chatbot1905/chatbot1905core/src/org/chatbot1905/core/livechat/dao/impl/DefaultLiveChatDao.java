@@ -126,4 +126,3 @@ public class DefaultLiveChatDao implements LiveChatDao
 
    }
 }
-}
