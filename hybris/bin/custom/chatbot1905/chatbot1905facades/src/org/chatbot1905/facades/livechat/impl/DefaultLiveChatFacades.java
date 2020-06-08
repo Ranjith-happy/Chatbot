@@ -4,6 +4,9 @@
 package org.chatbot1905.facades.livechat.impl;
 
 import de.hybris.platform.commercefacades.user.data.CustomerData;
+import de.hybris.platform.commerceservices.search.pagedata.PageableData;
+import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
+import de.hybris.platform.converters.Converters;
 import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.servicelayer.model.ModelService;
@@ -88,9 +91,21 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	}
 
 	@Override
-	public List<ActivityQuestions> getPostedQuestions()
+	public SearchPageData<ActivityQuestions> getPostedQuestions(final PageableData pageableData)
 	{
-		return getActivityQuestionsConverter.convertAll(liveChatService.getLast24HoursPostedQuestions());
+
+		final SearchPageData<ActivityQuestionsModel> questionResults = liveChatService.getLast24HoursPostedQuestions(pageableData);
+
+		return convertPageData(questionResults, getActivityQuestionsConverter);
+	}
+
+	protected <S, T> SearchPageData<T> convertPageData(final SearchPageData<S> source, final Converter<S, T> converter)
+	{
+		final SearchPageData<T> result = new SearchPageData<T>();
+		result.setPagination(source.getPagination());
+		result.setSorts(source.getSorts());
+		result.setResults(Converters.convertAll(source.getResults(), converter));
+		return result;
 	}
 
 	@Override

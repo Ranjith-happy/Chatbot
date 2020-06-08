@@ -4,6 +4,8 @@
 package org.chatbot1905.facades.livechat;
 
 import de.hybris.platform.commercefacades.user.data.CustomerData;
+import de.hybris.platform.commerceservices.search.pagedata.PageableData;
+import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public interface LiveChatFacades
 
 	boolean saveActivityQuestions(ActivityQuestions activityQuestions);
 
-	List<ActivityQuestions> getPostedQuestions();
+	SearchPageData<ActivityQuestions> getPostedQuestions(final PageableData pageableData);
 
 	boolean saveActivityAnswers(ActivityAnswers activityAnswers);
 
