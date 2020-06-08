@@ -100,6 +100,6 @@
 		<script src="${commonResourcePathHtml}/js/acc.chatbot.js"></script>
 		<script src="${commonResourcePathHtml}/js/voicerecognitionaddon.js"></script>
 		<script src="${commonResourcePathHtml}/js/acc.chatbot-spinner.js"></script>
-
+		<script src="${commonResourcePathHtml}/js/acc.livechat.js"></script>
 
 <cms:previewJS cmsPageRequestContextData="${cmsPageRequestContextData}" />
