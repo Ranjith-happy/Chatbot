@@ -3,8 +3,11 @@
  */
 package org.happybot.controllers.pages;
 
-import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
+import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractSearchPageController;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
+import de.hybris.platform.commerceservices.search.pagedata.PageableData;
+import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
+import de.hybris.platform.util.Config;
 
 import java.util.List;
 
@@ -15,6 +18,7 @@ import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
 import org.chatbot1905.facades.product.data.rest.CommonRestResponseObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/chat")
-public class LiveChatPageController extends AbstractPageController
+public class LiveChatPageController extends AbstractSearchPageController
 {
 
 	@Resource(name = "liveChatFacades")
@@ -63,19 +67,24 @@ public class LiveChatPageController extends AbstractPageController
 
 	@ResponseBody
 	@PostMapping(value = "/saveActivityQuestions")
-	public CommonRestResponseObject saveQuestions(@RequestBody
-	final ActivityQuestions activityQuestions)
+	public CommonRestResponseObject saveQuestions(@RequestBody final ActivityQuestions activityQuestions)
 	{
 		liveChatFacades.saveActivityQuestions(activityQuestions);
 		return WebUtils.createResponseObject("success");
 	}
 
+
 	@ResponseBody
 	@GetMapping(value = "/getActivityQuestions")
-	public CommonRestResponseObject getLast24hoursQuestions()
+	public CommonRestResponseObject getLast24hoursQuestions(@RequestParam(value = "page", defaultValue = "0")
+	final int page, @RequestParam(value = "show", defaultValue = "Page")
+	final ShowMode showMode,final Model model)
 	{
-		final List<ActivityQuestions> questionsList = liveChatFacades.getPostedQuestions();
-		return WebUtils.createResponseObject(questionsList);
+		final int noIfRecordsinOnePage = Integer.parseInt(Config.getParameter("number.of.records.in.one.page"));
+		final PageableData pageableData = createPageableData(page, noIfRecordsinOnePage, null, showMode);
+		final SearchPageData<ActivityQuestions> searchPageData = liveChatFacades.getPostedQuestions(pageableData);
+		populateModel(model, searchPageData, showMode);
+		return WebUtils.createResponseObject(searchPageData);
 	}
 
 	@ResponseBody
@@ -87,11 +96,24 @@ public class LiveChatPageController extends AbstractPageController
 		return WebUtils.createResponseObject("success");
 	}
 
+	/*
+	 * @ResponseBody
+	 *
+	 * @GetMapping(value = "/getActivityAnswers") public CommonRestResponseObject getActivityAnswers() { final
+	 * List<ActivityQuestions> answersList = liveChatFacades.getActivityAnswers(); return
+	 * WebUtils.createResponseObject(answersList); }
+	 */
 	@ResponseBody
 	@GetMapping(value = "/getActivityAnswers")
-	public CommonRestResponseObject getActivityAnswers()
+	public CommonRestResponseObject getActivityAnswers(@RequestParam(value = "page", defaultValue = "0")
+	final int page, @RequestParam(value = "show", defaultValue = "Page")
+	final ShowMode showMode, final Model model)
 	{
-		final List<ActivityQuestions> answersList = liveChatFacades.getActivityAnswers();
-		return WebUtils.createResponseObject(answersList);
+		final int noIfRecordsinOnePage = Integer.parseInt(Config.getParameter("number.of.records.in.one.page"));
+		final PageableData pageableData = createPageableData(page, noIfRecordsinOnePage, null, showMode);
+		final SearchPageData<ActivityQuestions> searchPageData = liveChatFacades.getActivityAnswers(pageableData);
+		populateModel(model, searchPageData, showMode);
+		return WebUtils.createResponseObject(searchPageData);
 	}
+
 }
