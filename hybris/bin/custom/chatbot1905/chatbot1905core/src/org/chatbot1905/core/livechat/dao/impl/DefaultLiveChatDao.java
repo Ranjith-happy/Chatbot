@@ -160,6 +160,5 @@ public class DefaultLiveChatDao implements LiveChatDao
 		return propList.get(0);
 	}
 
-
 }
 
