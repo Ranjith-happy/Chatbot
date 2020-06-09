@@ -56,14 +56,10 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	private Converter<ActivityQuestionsModel, ActivityQuestions> getActivityAnswersConverter;
 
 	@Override
-	public boolean updateLikesCount(final String userId)
+	public Integer updateLikesCount(final ActivityAnswersModel activityAnswersModel)
 	{
-		final UserModel userModel = userService.getUserForUID(userId);
-		final int noOfLikes = userModel.getLikes() == null ? 0 : userModel.getLikes();
-		userModel.setLikes(noOfLikes + 1);
-		modelService.save(userModel);
-		modelService.refresh(userModel);
-		return true;
+
+		return liveChatService.updateLikescountModels(activityAnswersModel);
 	}
 
 	@Override
@@ -116,10 +112,23 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 		return false;
 	}
 
+	/*
+	 * @Override public List<ActivityQuestions> getActivityAnswers() { return
+	 * getActivityAnswersConverter.convertAll(liveChatService.getActivityAnswers()); }
+	 */
+
 	@Override
-	public List<ActivityQuestions> getActivityAnswers()
+	public SearchPageData<ActivityQuestions> getActivityAnswers(final PageableData pageableData)
 	{
-		return getActivityAnswersConverter.convertAll(liveChatService.getActivityAnswers());
+
+		final SearchPageData<ActivityQuestionsModel> questionResults = liveChatService.getActivityAnswers(pageableData);
+
+		return convertPageData(questionResults, getActivityQuestionsConverter);
 	}
 
+	@Override
+	public ActivityAnswersModel specificAnswer(final String activityAnswers)
+	{
+		return liveChatService.getspecificAnswer(activityAnswers);
+	}
 }

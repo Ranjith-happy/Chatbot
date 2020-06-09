@@ -9,6 +9,7 @@ import de.hybris.platform.core.model.user.UserModel;
 
 import java.util.List;
 
+import org.happybot.model.ActivityAnswersModel;
 import org.happybot.model.ActivityQuestionsModel;
 
 
@@ -23,6 +24,19 @@ public interface LiveChatDao
 	SearchPageData<ActivityQuestionsModel> getLast24HoursPostedQuestions(UserModel user, final PageableData pageableData);
 
 
-	List<ActivityQuestionsModel> getActivityAnswers(final String uid);
+	List<ActivityQuestionsModel> getActivityAnswers(final String uid, PageableData pageableData);
+
+	/**
+	 * @return
+	 */
+	List<ActivityAnswersModel> updateLikescountModels();
+
+	Integer getlikescount(final String string);
+
+	/**
+	 * @param string
+	 * @return
+	 */
+	ActivityAnswersModel getspecificAnswer(String string);
 
 }

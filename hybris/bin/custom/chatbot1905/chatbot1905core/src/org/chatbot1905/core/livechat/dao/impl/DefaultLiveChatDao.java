@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.chatbot1905.core.livechat.dao.LiveChatDao;
+import org.happybot.model.ActivityAnswersModel;
 import org.happybot.model.ActivityQuestionsModel;
 import org.joda.time.DateTime;
 
@@ -64,6 +65,12 @@ public class DefaultLiveChatDao implements LiveChatDao
 			+ ActivityQuestionsModel.PK + "}";
 
    private static final String CUSTOMER_ANSWERED_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {createdby} ='currentUser'";
+
+	private static final String CUSTOMER_ANSWERED_LIKES = "SELECT {pk} FROM {ActivityAnswers}";
+
+	private static final String SPECIFIC_ANSWER = "SELECT {pk} FROM {ActivityAnswers} where {description}=?desc";
+
+	private static final String CUSTOMER_ANSWERED_LIKES_COUNT = "select {likes} from {Likescount} where {answer}=?answer";
 
 	@Override
 	public List<UserModel> getActiveCustomerList(final String uid)
@@ -112,7 +119,8 @@ public class DefaultLiveChatDao implements LiveChatDao
        return formatnew.format(datenew);
    }
 
-   public List<ActivityQuestionsModel> getActivityAnswers(final String uid)
+	@Override
+	public List<ActivityQuestionsModel> getActivityAnswers(final String uid, final PageableData pageableData)
    {
        final Map<String, Object> params = new HashMap<String, Object>();
        final StringBuilder builder = new StringBuilder(CUSTOMER_ANSWERED_ASKED_QUESTIONS);
@@ -125,5 +133,33 @@ public class DefaultLiveChatDao implements LiveChatDao
        return propList;
 
    }
+
+	@Override
+	public Integer getlikescount(final String string)
+	{
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(CUSTOMER_ANSWERED_LIKES_COUNT);
+		params.put("answer", string);
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final SearchResult<Integer> result = flexibleSearchService.search(query);
+		final List<Integer> propList = result.getResult();
+		return propList.get(0);
+	}
+
+	@Override
+	public ActivityAnswersModel getspecificAnswer(final String string)
+	{
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(SPECIFIC_ANSWER);
+		params.put("desc", string);
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final SearchResult<ActivityAnswersModel> result = flexibleSearchService.search(query);
+		final List<ActivityAnswersModel> propList = result.getResult();
+		return propList.get(0);
+	}
+
+
 }
-}
+

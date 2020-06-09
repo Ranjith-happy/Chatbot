@@ -17,6 +17,7 @@ import org.chatbot1905.facades.livechat.LiveChatFacades;
 import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
 import org.chatbot1905.facades.product.data.rest.CommonRestResponseObject;
+import org.happybot.model.ActivityAnswersModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,9 +50,10 @@ public class LiveChatPageController extends AbstractSearchPageController
 
 	@ResponseBody
 	@PostMapping(value = "/updatelikes")
-	public CommonRestResponseObject updateLikesCount(@RequestParam("userId") final String userId)
+	public CommonRestResponseObject updateLikesCount(@RequestBody final String activityAnswers)
 	{
-		liveChatFacades.updateLikesCount(userId);
+		final ActivityAnswersModel activityAnswer = liveChatFacades.specificAnswer(activityAnswers);
+		liveChatFacades.updateLikesCount(activityAnswer);
 		return WebUtils.createResponseObject("success");
 	}
 
@@ -96,12 +98,17 @@ public class LiveChatPageController extends AbstractSearchPageController
 		return WebUtils.createResponseObject("success");
 	}
 
-	@ResponseBody
 
+	@ResponseBody
 	@GetMapping(value = "/getActivityAnswers")
-	public CommonRestResponseObject getActivityAnswers()
+	public CommonRestResponseObject getActivityAnswers(@RequestParam(value = "page", defaultValue = "0")
+	final int page, @RequestParam(value = "show", defaultValue = "Page")
+	final ShowMode showMode, final Model model)
 	{
-		final List<ActivityQuestions> answersList = liveChatFacades.getActivityAnswers();
-		return WebUtils.createResponseObject(answersList);
+		final int noIfRecordsinOnePage = Integer.parseInt(Config.getParameter("number.of.records.in.one.page"));
+		final PageableData pageableData = createPageableData(page, noIfRecordsinOnePage, null, showMode);
+		final SearchPageData<ActivityQuestions> searchPageData = liveChatFacades.getActivityAnswers(pageableData);
+		populateModel(model, searchPageData, showMode);
+		return WebUtils.createResponseObject(searchPageData);
 	}
 }

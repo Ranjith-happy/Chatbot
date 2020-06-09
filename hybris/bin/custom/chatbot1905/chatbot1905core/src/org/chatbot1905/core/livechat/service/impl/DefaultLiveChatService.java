@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 
 import org.chatbot1905.core.livechat.dao.LiveChatDao;
 import org.chatbot1905.core.livechat.service.LiveChatService;
+import org.happybot.model.ActivityAnswersModel;
 import org.happybot.model.ActivityQuestionsModel;
 
 
@@ -45,11 +46,11 @@ public class DefaultLiveChatService implements LiveChatService
 	}
 
 	@Override
-	public List<ActivityQuestionsModel> getActivityAnswers()
+	public SearchPageData<ActivityQuestionsModel> getActivityAnswers(final PageableData pageableData)
 	{
 		final List<ActivityQuestionsModel> listQuestionModel = new ArrayList<ActivityQuestionsModel>();
 		final List<ActivityQuestionsModel> listQuestionModel2 = liveChatDao
-				.getActivityAnswers(userService.getCurrentUser().getUid());
+				.getActivityAnswers(userService.getCurrentUser().getUid(), pageableData);
 		for (final ActivityQuestionsModel activityQuestionsModel : listQuestionModel2)
 		{
 			if (activityQuestionsModel.getAnswers() != null)
@@ -57,9 +58,21 @@ public class DefaultLiveChatService implements LiveChatService
 				listQuestionModel.add(activityQuestionsModel);
 			}
 		}
-		return listQuestionModel;
+		final SearchPageData<ActivityQuestionsModel> listQuestionModel1 = (SearchPageData<ActivityQuestionsModel>) listQuestionModel;
+		return listQuestionModel1;
 
 	}
 
+	@Override
+	public Integer updateLikescountModels(final ActivityAnswersModel activityAnswersModel)
+	{
+		final Integer likecount = liveChatDao.getlikescount(activityAnswersModel.getPk().toString());
+		return likecount;
+	}
 
+	@Override
+	public ActivityAnswersModel getspecificAnswer(final String activityAnswers)
+	{
+		return liveChatDao.getspecificAnswer(activityAnswers);
+	}
 }

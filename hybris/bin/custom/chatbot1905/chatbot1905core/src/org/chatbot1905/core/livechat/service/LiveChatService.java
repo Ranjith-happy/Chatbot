@@ -9,6 +9,7 @@ import de.hybris.platform.core.model.user.UserModel;
 
 import java.util.List;
 
+import org.happybot.model.ActivityAnswersModel;
 import org.happybot.model.ActivityQuestionsModel;
 
 
@@ -22,5 +23,13 @@ public interface LiveChatService
 
 	SearchPageData<ActivityQuestionsModel> getLast24HoursPostedQuestions(final PageableData pageableData);
 
-	List<ActivityQuestionsModel> getActivityAnswers();
+	SearchPageData<ActivityQuestionsModel> getActivityAnswers(final PageableData pageableData);
+
+	Integer updateLikescountModels(ActivityAnswersModel activityAnswersModel);
+
+	/**
+	 * @param activityAnswers
+	 * @return
+	 */
+	ActivityAnswersModel getspecificAnswer(String activityAnswers);
 }
