@@ -67,6 +67,7 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	{
 		final UserModel userModel = userService.getCurrentUser();
 		userModel.setIsCurrentlyActive(false);
+		userModel.setIsNotificationShown(true);
 		modelService.save(userModel);
 		modelService.refresh(userModel);
 		return true;
@@ -130,5 +131,19 @@ public class DefaultLiveChatFacades implements LiveChatFacades
 	public ActivityAnswersModel specificAnswer(final String activityAnswers)
 	{
 		return liveChatService.getspecificAnswer(activityAnswers);
+	}
+
+	@Override
+	public boolean questionIsAnswered()
+	{
+		// XXX Auto-generated method stub
+		return liveChatService.questionIsAnswered();
+	}
+
+	@Override
+	public boolean updateIActiveFlagOfAnswer()
+	{
+		// XXX Auto-generated method stub
+		return liveChatService.updateIActiveFlagOfAnswer();
 	}
 }

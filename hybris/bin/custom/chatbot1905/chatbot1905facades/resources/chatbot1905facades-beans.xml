@@ -25,6 +25,7 @@
         <property name="productCode" type="String"/>
         <property name="postedduration" type="String"/>
         <property name="postedBy" type="String"/>
+        <property name="answers" type="java.util.List&lt;org.chatbot1905.facades.product.data.ActivityAnswers>" /> 
         <property name="validationError" type="java.lang.Object"/>
 		<property name="responseObject" type="java.lang.Object"/>
     </bean>
@@ -32,6 +33,7 @@
     <bean class="org.chatbot1905.facades.product.data.ActivityAnswers">
         <property name="description" type="String"/>
         <property name="productCode" type="String"/>
+        <property name="postedBy" type="String"/>
         <property name="validationError" type="java.lang.Object"/>
 		<property name="responseObject" type="java.lang.Object"/>
     </bean>

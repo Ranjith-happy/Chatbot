@@ -98,6 +98,8 @@
 	</c:otherwise>
 </c:choose>
 		<script src="${commonResourcePathHtml}/js/acc.chatbot.js"></script>
+		<script src="${commonResourcePathHtml}/js/acc.happybot.js"></script>
+		<script src="${commonResourcePathHtml}/js/acc.livechat.js"></script>
 		<script src="${commonResourcePathHtml}/js/voicerecognitionaddon.js"></script>
 		<script src="${commonResourcePathHtml}/js/acc.chatbot-spinner.js"></script>
 

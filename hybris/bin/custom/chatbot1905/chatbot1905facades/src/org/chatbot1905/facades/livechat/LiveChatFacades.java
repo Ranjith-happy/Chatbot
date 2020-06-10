@@ -18,10 +18,8 @@ import org.happybot.model.ActivityAnswersModel;
  * @author Pooja
  *
  */
-@SuppressWarnings("removal")
 public interface LiveChatFacades
 {
-	Integer updateLikesCount(ActivityAnswersModel activityAnswerModel);
 
 	boolean updateActiveFlag();
 
@@ -33,11 +31,26 @@ public interface LiveChatFacades
 
 	boolean saveActivityAnswers(ActivityAnswers activityAnswers);
 
-	SearchPageData<ActivityQuestions> getActivityAnswers(final PageableData pageableData);
+	/**
+	 * @param activityAnswersModel
+	 * @return
+	 */
+	Integer updateLikesCount(ActivityAnswersModel activityAnswersModel);
+
+	/**
+	 * @param pageableData
+	 * @return
+	 */
+	SearchPageData<ActivityQuestions> getActivityAnswers(PageableData pageableData);
 
 	/**
 	 * @param activityAnswers
 	 * @return
 	 */
 	ActivityAnswersModel specificAnswer(String activityAnswers);
+
+	boolean questionIsAnswered();
+
+	boolean updateIActiveFlagOfAnswer();
+
 }

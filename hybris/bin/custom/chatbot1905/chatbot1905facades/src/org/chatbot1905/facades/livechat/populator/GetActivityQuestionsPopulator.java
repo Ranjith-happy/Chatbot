@@ -5,11 +5,17 @@ package org.chatbot1905.facades.livechat.populator;
 
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
+import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.collections4.CollectionUtils;
+import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.chatbot1905.facades.product.data.ActivityQuestions;
+import org.happybot.model.ActivityAnswersModel;
 import org.happybot.model.ActivityQuestionsModel;
 
 
@@ -19,6 +25,10 @@ import org.happybot.model.ActivityQuestionsModel;
  */
 public class GetActivityQuestionsPopulator implements Populator<ActivityQuestionsModel, ActivityQuestions>
 {
+
+
+	@Resource(name = "getActivityAnswersConverter")
+	private Converter<ActivityAnswersModel, ActivityAnswers> getActivityAnswersConverter;
 
 	public String postedDuration(final ActivityQuestionsModel activityQuestionsModel)
 	{
@@ -54,7 +64,10 @@ public class GetActivityQuestionsPopulator implements Populator<ActivityQuestion
 		}
 		target.setPostedduration(postedDuration(source));
 		target.setPostedBy(source.getCreatedBy().getName());
-
+		if (CollectionUtils.isNotEmpty(source.getAnswers()))
+		{
+			target.setAnswers(getActivityAnswersConverter.convertAll(source.getAnswers()));
+		}
 	}
 
 }

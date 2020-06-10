@@ -68,6 +68,11 @@
 	                    <modifiers read="true" write="true" search="true" optional="true"/>
 	                    <persistence type="property"/>
 	                </attribute>
+	                <attribute qualifier="isNotificationShown" type="java.lang.Boolean">
+	                    <defaultvalue>Boolean.TRUE</defaultvalue>
+	                    <modifiers read="true" write="true" search="true" optional="true"/>
+	                    <persistence type="property"/>
+	                </attribute>
 	                <attribute qualifier="likes" type="java.lang.Integer">
 	                    <defaultvalue>Integer.0</defaultvalue>
 	                    <modifiers read="true" write="true" search="true" optional="true"/>

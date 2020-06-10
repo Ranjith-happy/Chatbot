@@ -26,10 +26,11 @@ public interface LiveChatDao
 
 	List<ActivityQuestionsModel> getActivityAnswers(final String uid, PageableData pageableData);
 
+	List<ActivityQuestionsModel> getAllQuestionList(UserModel user);
+
 	/**
 	 * @return
 	 */
-	List<ActivityAnswersModel> updateLikescountModels();
 
 	Integer getlikescount(final String string);
 

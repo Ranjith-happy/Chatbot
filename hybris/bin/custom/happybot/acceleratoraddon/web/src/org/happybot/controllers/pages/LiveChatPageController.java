@@ -108,4 +108,20 @@ public class LiveChatPageController extends AbstractSearchPageController
 		populateModel(model, searchPageData, showMode);
 		return WebUtils.createResponseObject(searchPageData);
 	}
+
+	@ResponseBody
+	@GetMapping(value = "/questionIsAnsweredPopup")
+	public CommonRestResponseObject questionIAnsweredAnswers()
+	{
+		final boolean result = liveChatFacades.questionIsAnswered();
+		return WebUtils.createResponseObject(result);
+	}
+
+	@ResponseBody
+	@PostMapping(value = "/closePopup")
+	public CommonRestResponseObject updateIActiveFlagOfAnswer()
+	{
+		final boolean result = liveChatFacades.updateIActiveFlagOfAnswer();
+		return WebUtils.createResponseObject(result);
+	}
 }

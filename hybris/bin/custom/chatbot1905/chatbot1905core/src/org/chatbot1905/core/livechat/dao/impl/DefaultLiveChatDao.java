@@ -59,18 +59,22 @@ public class DefaultLiveChatDao implements LiveChatDao
 
 	private static final String CUSTOMER_ActiveList = "SELECT {pk} FROM {user} where {isCurrentlyActive}=1 and {user.uid} !=?uid ";
 
-	private static final String CUSTOMER_LAST_24_HR_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {creationtime} >=?hours and {createdBy} !=?currentUser";
+	private static final String CUSTOMER_List = "SELECT {pk} FROM {user} where {user.uid} =?uid ";
 
 	private static final String SORT_QUESTIONS_BY_DATE = " ORDER BY {" + ActivityQuestionsModel.CREATIONTIME + "} DESC, {"
 			+ ActivityQuestionsModel.PK + "}";
 
-   private static final String CUSTOMER_ANSWERED_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {createdby} ='currentUser'";
+	private static final String CUSTOMER_ANSWERED_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {createdby} =?currentUser";
 
 	private static final String CUSTOMER_ANSWERED_LIKES = "SELECT {pk} FROM {ActivityAnswers}";
 
 	private static final String SPECIFIC_ANSWER = "SELECT {pk} FROM {ActivityAnswers} where {description}=?desc";
 
 	private static final String CUSTOMER_ANSWERED_LIKES_COUNT = "select {likes} from {Likescount} where {answer}=?answer";
+
+	private static final String CUSTOMER_LAST_24_HR_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {isActive} = 1 and {creationtime} >=?hours and {createdBy} !=?currentUser";
+
+	private static final String GET_USER_ALL_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {isActive} = 1 and {createdBy} = ?currentUser";
 
 	@Override
 	public List<UserModel> getActiveCustomerList(final String uid)
@@ -85,6 +89,17 @@ public class DefaultLiveChatDao implements LiveChatDao
 		return propList;
 	}
 
+	public UserModel getCustomerList(final String uid)
+	{
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(CUSTOMER_List);
+		params.put("uid", uid);
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final SearchResult<UserModel> result = flexibleSearchService.search(query);
+		final List<UserModel> propList = new ArrayList<>(result.getResult());
+		return propList.get(0);
+	}
 
 	@Override
 	public SearchPageData<ActivityQuestionsModel> getLast24HoursPostedQuestions(final UserModel user,
@@ -121,18 +136,18 @@ public class DefaultLiveChatDao implements LiveChatDao
 
 	@Override
 	public List<ActivityQuestionsModel> getActivityAnswers(final String uid, final PageableData pageableData)
-   {
-       final Map<String, Object> params = new HashMap<String, Object>();
-       final StringBuilder builder = new StringBuilder(CUSTOMER_ANSWERED_ASKED_QUESTIONS);
-       params.put("uid", uid);
-       params.put("creationTime", subtractMonthsFromCurrentDate());
-       final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
-       query.addQueryParameters(params);
-       final SearchResult<ActivityQuestionsModel> result = flexibleSearchService.search(query);
-       final List<ActivityQuestionsModel> propList = new ArrayList<>(result.getResult());
-       return propList;
+	{
+		final UserModel userModel = getCustomerList(uid);
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(CUSTOMER_ANSWERED_ASKED_QUESTIONS);
+		params.put("currentUser", userModel.getPk());
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final SearchResult<ActivityQuestionsModel> result = flexibleSearchService.search(query);
+		final List<ActivityQuestionsModel> propList = new ArrayList<>(result.getResult());
+		return propList;
 
-   }
+	}
 
 	@Override
 	public Integer getlikescount(final String string)
@@ -158,6 +173,19 @@ public class DefaultLiveChatDao implements LiveChatDao
 		final SearchResult<ActivityAnswersModel> result = flexibleSearchService.search(query);
 		final List<ActivityAnswersModel> propList = result.getResult();
 		return propList.get(0);
+	}
+
+	@Override
+	public List<ActivityQuestionsModel> getAllQuestionList(final UserModel user)
+	{
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(GET_USER_ALL_QUESTIONS);
+		params.put("currentUser", user);
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final SearchResult<ActivityQuestionsModel> result = flexibleSearchService.search(query);
+		final List<ActivityQuestionsModel> propList = new ArrayList<>(result.getResult());
+		return propList;
 	}
 
 }

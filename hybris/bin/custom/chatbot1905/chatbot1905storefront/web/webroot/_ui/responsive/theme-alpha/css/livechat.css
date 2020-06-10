@@ -1,0 +1,28 @@
+@keyframes blinking {
+        0%{
+          border: 1px solid #128a9e;
+        }
+      }
+#notification {
+    position:fixed;
+    bottom:50px;
+    text-align:center;
+    font-weight:bold;
+    background-color:cyan;
+    padding:5px;
+    margin-left:78%;
+    z-index: 99;
+    animation: blinking 1s infinite;
+}
+#notification span.dismiss {
+    padding:0 5px;
+    cursor:pointer;
+    float:right;
+    margin-right:10px;
+    margin-left:10px;
+    color:red;
+}
+#notification a {
+    text-decoration:none;
+    font-weight:bold;
+}

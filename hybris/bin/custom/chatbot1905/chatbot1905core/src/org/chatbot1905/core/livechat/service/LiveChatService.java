@@ -23,6 +23,10 @@ public interface LiveChatService
 
 	SearchPageData<ActivityQuestionsModel> getLast24HoursPostedQuestions(final PageableData pageableData);
 
+	boolean questionIsAnswered();
+
+	boolean updateIActiveFlagOfAnswer();
+
 	SearchPageData<ActivityQuestionsModel> getActivityAnswers(final PageableData pageableData);
 
 	Integer updateLikescountModels(ActivityAnswersModel activityAnswersModel);
@@ -32,4 +36,6 @@ public interface LiveChatService
 	 * @return
 	 */
 	ActivityAnswersModel getspecificAnswer(String activityAnswers);
+
+
 }
