@@ -68,6 +68,7 @@ public class GetActivityQuestionsPopulator implements Populator<ActivityQuestion
 		{
 			target.setAnswers(getActivityAnswersConverter.convertAll(source.getAnswers()));
 		}
+		target.setCode(source.getCode());
 	}
 
 }

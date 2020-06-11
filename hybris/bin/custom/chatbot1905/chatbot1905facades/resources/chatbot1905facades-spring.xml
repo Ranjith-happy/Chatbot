@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
--->
+<!-- Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved. -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -9,95 +7,116 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-		
-	<context:annotation-config/> 
 
-	<alias alias="simpleSuggestionFacade" name="defaultSimpleSuggestionFacade"/>
-	<bean id="defaultSimpleSuggestionFacade" class="org.chatbot1905.facades.suggestion.impl.DefaultSimpleSuggestionFacade" >
-		<property name="simpleSuggestionService" ref="simpleSuggestionService"/>
-		<property name="userService" ref="userService"/>
-		<property name="categoryService" ref="categoryService"/>
-		<property name="productService" ref="productService"/>
-		<property name="productConverter" ref="carouselProductConverter"/>
-		<property name="cartService" ref="cartService"/>
+	<context:annotation-config />
+
+	<alias alias="simpleSuggestionFacade"
+		name="defaultSimpleSuggestionFacade" />
+	<bean id="defaultSimpleSuggestionFacade"
+		class="org.chatbot1905.facades.suggestion.impl.DefaultSimpleSuggestionFacade">
+		<property name="simpleSuggestionService"
+			ref="simpleSuggestionService" />
+		<property name="userService" ref="userService" />
+		<property name="categoryService" ref="categoryService" />
+		<property name="productService" ref="productService" />
+		<property name="productConverter"
+			ref="carouselProductConverter" />
+		<property name="cartService" ref="cartService" />
 	</bean>
-	
-	<bean id="carouselProductConverter" parent="defaultProductConverter">
+
+	<bean id="carouselProductConverter"
+		parent="defaultProductConverter">
 		<property name="populators">
 			<list merge="true">
-				<ref bean="productPricePopulator"/>
+				<ref bean="productPricePopulator" />
 			</list>
 		</property>
 	</bean>
 
-	<alias name="acceleratorVariantOptionDataConverter" alias="variantOptionDataConverter"/> 
-	<bean id="acceleratorVariantOptionDataConverter" parent="abstractPopulatingConverter">
-		<lookup-method name="createTarget" bean="variantOptionData"/>
+	<alias name="acceleratorVariantOptionDataConverter"
+		alias="variantOptionDataConverter" />
+	<bean id="acceleratorVariantOptionDataConverter"
+		parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget"
+			bean="variantOptionData" />
 		<property name="populators">
 			<list>
-				<ref bean="acceleratorVariantOptionDataPopulator"/>
+				<ref bean="acceleratorVariantOptionDataPopulator" />
 			</list>
 		</property>
 	</bean>
 
-	<alias name="defaultAcceleratorVariantOptionDataPopulator" alias="acceleratorVariantOptionDataPopulator"/>
-	<bean id="defaultAcceleratorVariantOptionDataPopulator"  class="org.chatbot1905.facades.populators.AcceleratorVariantOptionDataPopulator"
-	      parent="variantOptionDataPopulator" >
-		<property name="mediaService" ref="mediaService"/>
-		<property name="mediaContainerService" ref="mediaContainerService"/>
-		<property name="typeService" ref="typeService"/>
-		<property name="imageFormatMapping" ref="imageFormatMapping"/>
+	<alias name="defaultAcceleratorVariantOptionDataPopulator"
+		alias="acceleratorVariantOptionDataPopulator" />
+	<bean id="defaultAcceleratorVariantOptionDataPopulator"
+		class="org.chatbot1905.facades.populators.AcceleratorVariantOptionDataPopulator"
+		parent="variantOptionDataPopulator">
+		<property name="mediaService" ref="mediaService" />
+		<property name="mediaContainerService"
+			ref="mediaContainerService" />
+		<property name="typeService" ref="typeService" />
+		<property name="imageFormatMapping" ref="imageFormatMapping" />
 		<property name="variantAttributeMapping">
 			<map>
-				<entry key="ApparelStyleVariantProduct.style" value="styleSwatch"/>
+				<entry key="ApparelStyleVariantProduct.style"
+					value="styleSwatch" />
 			</map>
 		</property>
 	</bean>
 
 
-	<alias name="acceleratorGenderConverter" alias="genderConverter"/> 
-	<bean id="acceleratorGenderConverter" parent="abstractPopulatingConverter">
-		<property name="targetClass" value="org.chatbot1905.facades.product.data.GenderData"/>
-			<property name="populators">
-				<list>
-					<ref bean="genderDataPopulator"/>
-				</list>
-			</property>
+	<alias name="acceleratorGenderConverter" alias="genderConverter" />
+	<bean id="acceleratorGenderConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.chatbot1905.facades.product.data.GenderData" />
+		<property name="populators">
+			<list>
+				<ref bean="genderDataPopulator" />
+			</list>
+		</property>
 	</bean>
 
-	<alias name="defaultGenderDataPopulator" alias="genderDataPopulator"/>
-	<bean id="defaultGenderDataPopulator" class="org.chatbot1905.facades.populators.GenderDataPopulator" >
-		<property name="typeService" ref="typeService"/>
+	<alias name="defaultGenderDataPopulator"
+		alias="genderDataPopulator" />
+	<bean id="defaultGenderDataPopulator"
+		class="org.chatbot1905.facades.populators.GenderDataPopulator">
+		<property name="typeService" ref="typeService" />
 	</bean>
 
-	<bean id="apparelProductPopulator" class="org.chatbot1905.facades.populators.ApparelProductPopulator" >
-		<property name="genderConverter" ref="genderConverter"/>
+	<bean id="apparelProductPopulator"
+		class="org.chatbot1905.facades.populators.ApparelProductPopulator">
+		<property name="genderConverter" ref="genderConverter" />
 	</bean>
 
 	<!-- Add the apparelProductPopulator to the productConverter -->
 	<bean parent="modifyPopulatorList">
-		<property name="list" ref="productConverter"/>
-		<property name="add" ref="apparelProductPopulator"/>
+		<property name="list" ref="productConverter" />
+		<property name="add" ref="apparelProductPopulator" />
 	</bean>
 
 	<!-- accelerator Image Format Mappings -->
-	<alias name="acceleratorImageFormatMapping" alias="imageFormatMapping"/>
-	<bean id="acceleratorImageFormatMapping" parent="defaultImageFormatMapping">
+	<alias name="acceleratorImageFormatMapping"
+		alias="imageFormatMapping" />
+	<bean id="acceleratorImageFormatMapping"
+		parent="defaultImageFormatMapping">
 		<property name="mapping">
 			<map>
-				<entry key="superZoom" value="1200Wx1200H"/>
-				<entry key="zoom" value="515Wx515H"/>
-				<entry key="store" value="365Wx246H"/>
-				<entry key="product" value="300Wx300H"/>
-				<entry key="thumbnail" value="96Wx96H"/>
-				<entry key="cartIcon" value="65Wx65H"/>
-				<entry key="styleSwatch" value="30Wx30H"/>
+				<entry key="superZoom" value="1200Wx1200H" />
+				<entry key="zoom" value="515Wx515H" />
+				<entry key="store" value="365Wx246H" />
+				<entry key="product" value="300Wx300H" />
+				<entry key="thumbnail" value="96Wx96H" />
+				<entry key="cartIcon" value="65Wx65H" />
+				<entry key="styleSwatch" value="30Wx30H" />
 			</map>
 		</property>
 	</bean>
 
-	<alias name="acceleratorProductPrimaryImagePopulator" alias="productPrimaryImagePopulator" />
-	<bean id="acceleratorProductPrimaryImagePopulator" parent="defaultProductPrimaryImagePopulator">
+	<alias name="acceleratorProductPrimaryImagePopulator"
+		alias="productPrimaryImagePopulator" />
+	<bean id="acceleratorProductPrimaryImagePopulator"
+		parent="defaultProductPrimaryImagePopulator">
 		<property name="imageFormats">
 			<list>
 				<value>zoom</value>
@@ -108,8 +127,10 @@
 		</property>
 	</bean>
 
-	<alias name="acceleratorProductGalleryImagesPopulator" alias="productGalleryImagesPopulator" />
-	<bean id="acceleratorProductGalleryImagesPopulator" parent="defaultProductGalleryImagesPopulator">
+	<alias name="acceleratorProductGalleryImagesPopulator"
+		alias="productGalleryImagesPopulator" />
+	<bean id="acceleratorProductGalleryImagesPopulator"
+		parent="defaultProductGalleryImagesPopulator">
 		<property name="imageFormats">
 			<list>
 				<value>superZoom</value>
@@ -120,103 +141,152 @@
 		</property>
 	</bean>
 
-	<bean id="customerEmailContext" class="org.chatbot1905.facades.process.email.context.CustomerEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="customerConverter" ref="customerConverter"/>
+	<bean id="customerEmailContext"
+		class="org.chatbot1905.facades.process.email.context.CustomerEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
 	</bean>
 
-	<bean id="forgottenPasswordEmailContext" class="org.chatbot1905.facades.process.email.context.ForgottenPasswordEmailContext" parent="customerEmailContext" scope="prototype" >
-		<property name="customerConverter" ref="customerConverter"/>
+	<bean id="forgottenPasswordEmailContext"
+		class="org.chatbot1905.facades.process.email.context.ForgottenPasswordEmailContext"
+		parent="customerEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
 	</bean>
 
-	<bean id="orderNotificationEmailContext" class="org.chatbot1905.facades.process.email.context.OrderNotificationEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="orderConverter" ref="orderConverter"/>
+	<bean id="orderNotificationEmailContext"
+		class="org.chatbot1905.facades.process.email.context.OrderNotificationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="orderConverter" ref="orderConverter" />
 	</bean>
 
-	<bean id="quoteNotificationEmailContext" class="org.chatbot1905.facades.process.email.context.QuoteNotificationEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="quoteService" ref="quoteService"/>
-		<property name="quoteConverter" ref="quoteConverter"/>
-	</bean>
-	
-	<bean id="deliverySentEmailContext" class="org.chatbot1905.facades.process.email.context.DeliverySentEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="consignmentConverter" ref="consignmentConverter"/>
-	</bean>
-	
-	<bean id="readyForPickupEmailContext" class="org.chatbot1905.facades.process.email.context.ReadyForPickupEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="consignmentConverter" ref="consignmentConverter"/>
-	</bean>
-	
-	<bean id="orderCancelledEmailContext" class="org.chatbot1905.facades.process.email.context.OrderCancelledEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="orderConverter" ref="orderConverter"/>
-	</bean>
-	
-	<bean id="orderRefundEmailContext" class="org.chatbot1905.facades.process.email.context.OrderRefundEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="orderConverter" ref="orderConverter"/>
-	</bean>
-	<bean id="consignmentCollectionReminderEmailContext" class="org.chatbot1905.facades.process.email.context.ConsignmentCollectionReminderEmailContext" parent="abstractEmailContext" scope="prototype">
-        <property name="consignmentConverter" ref="consignmentConverter"/>
-        <property name="formatFactory" ref="formatFactory"/>
-        <property name="customerServiceUncollectedConsignmentStrategy" ref="customerServiceUncollectedConsignmentStrategy" />
-        <property name="orderConverter" ref="orderConverter"/>
-    </bean>
-
-	<bean id="orderPartiallyModifiedEmailContext" class="org.chatbot1905.facades.process.email.context.OrderPartiallyModifiedEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="orderConverter" ref="orderConverter"/>
-		<property name="orderEntryConverter" ref="orderEntryConverter"/>
-		<property name="priceDataFactory" ref="priceDataFactory"/>		
+	<bean id="quoteNotificationEmailContext"
+		class="org.chatbot1905.facades.process.email.context.QuoteNotificationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="quoteService" ref="quoteService" />
+		<property name="quoteConverter" ref="quoteConverter" />
 	</bean>
 
-	<bean id="orderPartiallyCanceledEmailContext" class="org.chatbot1905.facades.process.email.context.OrderPartiallyCanceledEmailContext" parent="orderPartiallyModifiedEmailContext" scope="prototype" >
+	<bean id="deliverySentEmailContext"
+		class="org.chatbot1905.facades.process.email.context.DeliverySentEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="consignmentConverter"
+			ref="consignmentConverter" />
 	</bean>
 
-	<bean id="orderPartiallyRefundedEmailContext" class="org.chatbot1905.facades.process.email.context.OrderPartiallyRefundedEmailContext" parent="orderPartiallyModifiedEmailContext" scope="prototype" >
+	<bean id="readyForPickupEmailContext"
+		class="org.chatbot1905.facades.process.email.context.ReadyForPickupEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="consignmentConverter"
+			ref="consignmentConverter" />
 	</bean>
 
-	<bean id="notPickedUpConsignmentCanceledEmailContext" class="org.chatbot1905.facades.process.email.context.NotPickedUpConsignmentCanceledEmailContext" parent="abstractEmailContext" scope="prototype" >
-		<property name="consignmentConverter" ref="consignmentConverter"/>
-		<property name="priceDataFactory" ref="priceDataFactory"/>
+	<bean id="orderCancelledEmailContext"
+		class="org.chatbot1905.facades.process.email.context.OrderCancelledEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="orderConverter" ref="orderConverter" />
 	</bean>
 
-	<alias name="yacceleratorSearchPagePointOfServiceDistancePopulator" alias="searchPagePointOfServiceDistancePopulator" />
-	<bean id="yacceleratorSearchPagePointOfServiceDistancePopulator" class="org.chatbot1905.facades.storefinder.populators.SearchPagePointOfServiceDistancePopulator" >
-		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter"/>
+	<bean id="orderRefundEmailContext"
+		class="org.chatbot1905.facades.process.email.context.OrderRefundEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="orderConverter" ref="orderConverter" />
+	</bean>
+	<bean id="consignmentCollectionReminderEmailContext"
+		class="org.chatbot1905.facades.process.email.context.ConsignmentCollectionReminderEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="consignmentConverter"
+			ref="consignmentConverter" />
+		<property name="formatFactory" ref="formatFactory" />
+		<property
+			name="customerServiceUncollectedConsignmentStrategy"
+			ref="customerServiceUncollectedConsignmentStrategy" />
+		<property name="orderConverter" ref="orderConverter" />
 	</bean>
 
-	<bean id="genderData" class="org.chatbot1905.facades.product.data.GenderData" scope="prototype"/>
-	
-    <alias name="defaultChatbotCouponFacade" alias="chatbotCouponFacade"/>
-    <bean id="defaultChatbotCouponFacade" class="org.chatbot1905.facades.coupon.impl.DefaultChatbotCouponFacade">
-		<property name="chatbotCouponService" ref="chatbotCouponService"/>
-		<property name="couponConverter" ref="couponConverter"/>
+	<bean id="orderPartiallyModifiedEmailContext"
+		class="org.chatbot1905.facades.process.email.context.OrderPartiallyModifiedEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="orderConverter" ref="orderConverter" />
+		<property name="orderEntryConverter"
+			ref="orderEntryConverter" />
+		<property name="priceDataFactory" ref="priceDataFactory" />
 	</bean>
-	
-	<alias name="defaultLiveChatFacades" alias="liveChatFacades"/>
-	<bean id="defaultLiveChatFacades" class="org.chatbot1905.facades.livechat.impl.DefaultLiveChatFacades" >
-    </bean>
-    
-    
-    
-    
-    <bean id="activityQuestionsConverter" parent="abstractPopulatingConverter">
-		<property name="targetClass" value="org.happybot.model.ActivityQuestionsModel"/>
-			<property name="populators">
-				<list>
-					<ref bean="activitYQuestionsPopulator"/>
-				</list>
-			</property>
-	</bean>
-    <bean id="activitYQuestionsPopulator" class="org.chatbot1905.facades.livechat.populator.ActivitYQuestionsPopulator" >
 
+	<bean id="orderPartiallyCanceledEmailContext"
+		class="org.chatbot1905.facades.process.email.context.OrderPartiallyCanceledEmailContext"
+		parent="orderPartiallyModifiedEmailContext" scope="prototype">
 	</bean>
-	
-	 <bean id="getActivityQuestionsConverter" parent="abstractPopulatingConverter">
-		<property name="targetClass" value="org.chatbot1905.facades.product.data.ActivityQuestions"/>
-			<property name="populators">
-				<list>
-					<ref bean="getActivityQuestionsPopulator"/>
-				</list>
-			</property>
+
+	<bean id="orderPartiallyRefundedEmailContext"
+		class="org.chatbot1905.facades.process.email.context.OrderPartiallyRefundedEmailContext"
+		parent="orderPartiallyModifiedEmailContext" scope="prototype">
 	</bean>
-    <bean id="getActivityQuestionsPopulator" class="org.chatbot1905.facades.livechat.populator.GetActivityQuestionsPopulator" >
+
+	<bean id="notPickedUpConsignmentCanceledEmailContext"
+		class="org.chatbot1905.facades.process.email.context.NotPickedUpConsignmentCanceledEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="consignmentConverter"
+			ref="consignmentConverter" />
+		<property name="priceDataFactory" ref="priceDataFactory" />
+	</bean>
+
+	<alias
+		name="yacceleratorSearchPagePointOfServiceDistancePopulator"
+		alias="searchPagePointOfServiceDistancePopulator" />
+	<bean id="yacceleratorSearchPagePointOfServiceDistancePopulator"
+		class="org.chatbot1905.facades.storefinder.populators.SearchPagePointOfServiceDistancePopulator">
+		<property name="pointOfServiceDistanceConverter"
+			ref="pointOfServiceDistanceConverter" />
+	</bean>
+
+	<bean id="genderData"
+		class="org.chatbot1905.facades.product.data.GenderData"
+		scope="prototype" />
+
+	<alias name="defaultChatbotCouponFacade"
+		alias="chatbotCouponFacade" />
+	<bean id="defaultChatbotCouponFacade"
+		class="org.chatbot1905.facades.coupon.impl.DefaultChatbotCouponFacade">
+		<property name="chatbotCouponService"
+			ref="chatbotCouponService" />
+		<property name="couponConverter" ref="couponConverter" />
+	</bean>
+
+	<alias name="defaultLiveChatFacades" alias="liveChatFacades" />
+	<bean id="defaultLiveChatFacades"
+		class="org.chatbot1905.facades.livechat.impl.DefaultLiveChatFacades">
+	</bean>
+
+
+
+
+	<bean id="activityQuestionsConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.happybot.model.ActivityQuestionsModel" />
+		<property name="populators">
+			<list>
+				<ref bean="activitYQuestionsPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="activitYQuestionsPopulator"
+		class="org.chatbot1905.facades.livechat.populator.ActivitYQuestionsPopulator">
+		<property name="guidKeyGenerator" ref="guidKeyGenerator" />
+	</bean>
+
+	<bean id="getActivityQuestionsConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.chatbot1905.facades.product.data.ActivityQuestions" />
+		<property name="populators">
+			<list>
+				<ref bean="getActivityQuestionsPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="getActivityQuestionsPopulator"
+		class="org.chatbot1905.facades.livechat.populator.GetActivityQuestionsPopulator">
 
 	</bean>
 
@@ -230,8 +300,11 @@
 			</list>
 		</property>
 	</bean>
+
 	<bean id="activityAnswersPopulator"
-		class="org.chatbot1905.facades.livechat.populator.ActivityAnswersPopulator"></bean>
+		class="org.chatbot1905.facades.livechat.populator.ActivityAnswersPopulator">
+		<property name="guidKeyGenerator" ref="guidKeyGenerator" />
+	</bean>
 
 	<bean id="getActivityAnswersConverter"
 		parent="abstractPopulatingConverter">
@@ -247,6 +320,6 @@
 		class="org.chatbot1905.facades.livechat.populator.GetActivityAnswersPopulator">
 
 	</bean>
-	
-	
+
+
 </beans>

@@ -11,16 +11,14 @@ import de.hybris.platform.servicelayer.user.UserService;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
-import org.chatbot1905.facades.product.data.ActivityQuestions;
-import org.happybot.model.ActivityQuestionsModel;
-
+import org.chatbot1905.facades.product.data.ActivityAnswers;
+import org.happybot.model.ActivityAnswersModel;
 
 /**
- * @author Pooja
+ * @author Achyuth.guddeti
  *
  */
-public class ActivitYQuestionsPopulator implements Populator<ActivityQuestions, ActivityQuestionsModel>
+public class ActivityAnswersPopulator implements Populator<ActivityAnswers, ActivityAnswersModel>
 {
 	@Resource(name = "productService")
 	private ProductService productService;
@@ -47,14 +45,11 @@ public class ActivitYQuestionsPopulator implements Populator<ActivityQuestions, 
 		this.guidKeyGenerator = guidKeyGenerator;
 	}
 
-	public void populate(final ActivityQuestions source, final ActivityQuestionsModel target) throws ConversionException
+	@Override
+	public void populate(final ActivityAnswers source, final ActivityAnswersModel target) throws ConversionException
 	{
-
 		target.setDescription(source.getDescription());
-		if (StringUtils.isNotBlank(source.getProductCode()))
-		{
-			target.setProduct(productService.getProductForCode(source.getProductCode()));
-		}
+		target.setProduct(productService.getProductForCode(source.getProductCode()));
 		target.setCreatedBy(userService.getCurrentUser());
 		target.setIsActive(true);
 		target.setCode(getGuidKeyGenerator().generate().toString());

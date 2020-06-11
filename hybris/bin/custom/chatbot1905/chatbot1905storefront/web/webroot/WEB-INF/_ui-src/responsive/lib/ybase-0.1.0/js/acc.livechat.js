@@ -319,11 +319,11 @@ function  getAnswers(){
 			success : function(data){
 				$('.show-questionsAns').empty();
 				 for (var key in data.responseObject.results) {
-					 var uerQuestions ='<div class="viewQuestion"><b>Ques.</b>&nbsp'+data.responseObject.results[key].description +'</div>'
+					 var uerQuestions ='<div class="viewQuestion"><br><b>Ques.</b>&nbsp'+data.responseObject.results[key].description +'</div>'
 					 $('.show-questionsAns').append(uerQuestions);
 					 for (var reskey in data.responseObject.results[key].answers)
 						 {
-							var userAns = '<div class="viewAnswer"><b>Ans.</b>&nbsp<b>'+ data.responseObject.results[key].answers[reskey].postedBy +':</b>' +data.responseObject.results[key].answers[reskey].description +'</div>';
+							var userAns = '<div class="viewAnswer"><b>Ans.</b>&nbsp<b>'+ data.responseObject.results[key].answers[reskey].postedBy +':</b>&nbsp' +data.responseObject.results[key].answers[reskey].description +'</div>';
 							$('.show-questionsAns').append(userAns);
 						 }
 		            }

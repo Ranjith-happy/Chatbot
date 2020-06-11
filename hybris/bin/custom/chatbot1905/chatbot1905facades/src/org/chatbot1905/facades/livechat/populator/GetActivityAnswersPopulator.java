@@ -24,6 +24,7 @@ public class GetActivityAnswersPopulator implements Populator<ActivityAnswersMod
 			target.setProductCode(source.getProduct().getCode());
 		}
 		target.setPostedBy(source.getCreatedBy().getName());
+		target.setCode(source.getCode());
 
 	}
 
