@@ -165,7 +165,7 @@ function sendMessage(pCode,addtoCart){
 	recognition.stop();
 	
 }
-function  getQuestions(){
+/*function  getQuestions(){
 	  $.ajax({
 	    	url: ACC.config.encodedContextPath + "/chat/getActivityQuestions",
 			type: 'GET',
@@ -178,7 +178,50 @@ function  getQuestions(){
 		            }
 	        },
 	    });
+}*/
+
+function  getQuestions(){
+	  $.ajax({
+	    	url: ACC.config.encodedContextPath + "/chat/getActivityQuestions",
+			type: 'GET',
+			success : function(data){
+				$('.show-questionsAns').empty();
+				 for (var key in data.responseObject.results) {
+					 var code = data.responseObject.results[key].code;
+					  var userWriteContent ='<div class="livechatBox"><b>'+data.responseObject.results[key].postedBy+':</b>'+data.responseObject.results[key].description+'&nbsp'+data.responseObject.results[key].postedduration+'</div><div class="chat-message-group"><div class="textContent"><textarea id="liveChatText_'+code+'" class="chat-textarea" placeholder="Type your answer here.."></textarea><div class="send-icon-ans" id='+code+'> <a class="button-chatbot is-white" title="send message"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></div>    </div>    </div>';
+                   $( userWriteContent ).insertBefore( ".typing-text1" );
+						
+		            }
+	        },
+	    });
 }
+
+$(document).on("click",".send-icon-ans",function(){
+	qcode = $(this).attr('id');
+	$('#'+qcode).click(function(){
+		var textAreaContent = $("#liveChatText_"+qcode).val();
+	    	/*alert("textAreaContent======"+textAreaContent);*/
+	    	var uri = ACC.config.encodedContextPath + "/chat/saveActivityAnswers";
+	    	var postData={};
+	    	var questions = {};
+	    	questions.code=qcode;
+	    	postData.description=textAreaContent;
+	    	postData.productCode="1981415";
+			postData.question = questions;
+	    	jQuery.ajax({
+	    	    url: uri,
+	    	    type: "POST",
+	    	    data: JSON.stringify(postData),
+	    	    dataType: 'json',
+	    	    contentType: "application/json",
+	    	    success: function(result) {
+	    	    	$("#liveChatText_"+qcode).val('');
+	    	    }
+	    	}); 
+	
+	});
+}); 
+
 $('#chatTextarea').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){ 
@@ -244,15 +287,14 @@ function fetchdata(){
 	    });
 	});
 	
-	$(document).ready(function ()
-			{
+$(document).ready(function (){
 		$.ajax({
 			url : ACC.config.encodedContextPath + "/chat/questionIsAnsweredPopup",
 			type : 'GET',
 			success : function(data) {
 			if(data.responseObject == true)
 			{
-				$("#notification").fadeIn("slow").append('your question is answered');
+				$("#notification").show().append('your question is answered');
 			}
 		}
 	  });
@@ -270,7 +312,7 @@ function fetchdata(){
 				$('#liveChat').hide();
 				$('#viewAnswers').show();
 				$('#chat-icon').trigger('click');
-			    $("#notification").fadeOut("slow");
+			    $("#notification").hide();
 				getAnswers();			
 			}
 		}

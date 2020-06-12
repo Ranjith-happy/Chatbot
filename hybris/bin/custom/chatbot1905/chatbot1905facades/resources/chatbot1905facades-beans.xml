@@ -36,6 +36,7 @@
         <property name="productCode" type="String"/>
         <property name="postedBy" type="String"/>
         <property name="code" type="String"/>
+        <property name="questions" type="org.chatbot1905.facades.product.data.ActivityQuestions" />
         <property name="validationError" type="java.lang.Object"/>
 		<property name="responseObject" type="java.lang.Object"/>
     </bean>

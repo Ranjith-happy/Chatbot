@@ -11,6 +11,7 @@ import de.hybris.platform.servicelayer.user.UserService;
 
 import javax.annotation.Resource;
 
+import org.chatbot1905.core.livechat.service.LiveChatService;
 import org.chatbot1905.facades.product.data.ActivityAnswers;
 import org.happybot.model.ActivityAnswersModel;
 
@@ -25,6 +26,9 @@ public class ActivityAnswersPopulator implements Populator<ActivityAnswers, Acti
 
 	@Resource(name = "userService")
 	private UserService userService;
+
+	@Resource(name = "liveChatService")
+	private LiveChatService liveChatService;
 
 	private KeyGenerator guidKeyGenerator;
 
@@ -53,6 +57,7 @@ public class ActivityAnswersPopulator implements Populator<ActivityAnswers, Acti
 		target.setCreatedBy(userService.getCurrentUser());
 		target.setIsActive(true);
 		target.setCode(getGuidKeyGenerator().generate().toString());
+		target.setQuestions((liveChatService.getQuestionPk(source.getQuestions().getCode()).get(0)));
 
 	}
 

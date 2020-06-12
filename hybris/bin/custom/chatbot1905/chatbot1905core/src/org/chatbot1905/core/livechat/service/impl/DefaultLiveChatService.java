@@ -95,7 +95,8 @@ public class DefaultLiveChatService implements LiveChatService
 	public boolean questionIsAnswered()
 	{
 		final UserModel userModel = userService.getCurrentUser();
-		if (userModel.getIsNotificationShown() == true)
+		final boolean notification = userModel.getIsNotificationShown() != null ? userModel.getIsNotificationShown() : false;
+		if (notification == true)
 		{
 			final List<ActivityQuestionsModel> questionList = liveChatDao.getAllQuestionList(userModel);
 			for (final ActivityQuestionsModel question : questionList)
@@ -133,5 +134,11 @@ public class DefaultLiveChatService implements LiveChatService
 		userModel.setIsNotificationShown(false);
 		modelService.save(userModel);
 		return true;
+	}
+
+	@Override
+	public List<ActivityQuestionsModel> getQuestionPk(final String code)
+	{
+		return liveChatDao.getQuestionPk(code);
 	}
 }

@@ -66,6 +66,8 @@ public class DefaultLiveChatDao implements LiveChatDao
 
 	private static final String CUSTOMER_ANSWERED_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {createdby} =?currentUser";
 
+	private static final String CUSTOMER_DESCRIPTION_ASKED_QUESTIONS = "select {pk} from {ActivityQuetions} where {code}=?code";
+
 	private static final String CUSTOMER_ANSWERED_LIKES = "SELECT {pk} FROM {ActivityAnswers}";
 
 	private static final String SPECIFIC_ANSWER = "SELECT {pk} FROM {ActivityAnswers} where {description}=?desc";
@@ -75,6 +77,8 @@ public class DefaultLiveChatDao implements LiveChatDao
 	private static final String CUSTOMER_LAST_24_HR_ASKED_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {isActive} = 1 and {creationtime} >=?hours and {createdBy} !=?currentUser";
 
 	private static final String GET_USER_ALL_QUESTIONS = "SELECT {pk} from {ActivityQuestions} where {isActive} = 1 and {createdBy} = ?currentUser";
+
+	private static final String GET_QUESTION_MODEL = "select {pk} from {ActivityQuestions} where {code}=?code";
 
 	@Override
 	public List<UserModel> getActiveCustomerList(final String uid)
@@ -187,6 +191,19 @@ public class DefaultLiveChatDao implements LiveChatDao
 		final List<ActivityQuestionsModel> propList = new ArrayList<>(result.getResult());
 		return propList;
 	}
+
+	@Override
+	public List<ActivityQuestionsModel> getQuestionPk(final String code)
+	{
+		final Map<String, Object> params = new HashMap<String, Object>();
+		final StringBuilder builder = new StringBuilder(GET_QUESTION_MODEL);
+		params.put("code", code);
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(builder.toString());
+		query.addQueryParameters(params);
+		final ActivityQuestionsModel result = flexibleSearchService.searchUnique(query);
+		return result;
+	}
+
 
 }
 

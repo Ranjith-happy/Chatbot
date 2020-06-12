@@ -37,5 +37,6 @@ public interface LiveChatService
 	 */
 	ActivityAnswersModel getspecificAnswer(String activityAnswers);
 
+	List<ActivityQuestionsModel> getQuestionPk(final String code);
 
 }

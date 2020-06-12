@@ -90,7 +90,8 @@ public class LiveChatPageController extends AbstractSearchPageController
 
 	@ResponseBody
 	@PostMapping(value = "/saveActivityAnswers")
-	public CommonRestResponseObject saveAnswers(@RequestParam("activityAnswers") final ActivityAnswers activityAnswers)
+	public CommonRestResponseObject saveAnswers(@RequestBody
+	final ActivityAnswers activityAnswers)
 	{
 		liveChatFacades.saveActivityAnswers(activityAnswers);
 		return WebUtils.createResponseObject("success");

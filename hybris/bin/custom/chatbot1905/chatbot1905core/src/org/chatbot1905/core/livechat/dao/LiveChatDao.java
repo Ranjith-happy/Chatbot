@@ -40,4 +40,6 @@ public interface LiveChatDao
 	 */
 	ActivityAnswersModel getspecificAnswer(String string);
 
+	List<ActivityQuestionsModel> getQuestionPk(final String code);
+
 }
